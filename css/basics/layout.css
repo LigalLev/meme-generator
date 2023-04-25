@@ -1,0 +1,20 @@
+/* MAIN LAYOUT */
+
+.main-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(20px, 1fr) minmax(auto, 980px) minmax(20px, 1fr);
+
+    /* grid-template-columns:
+        minmax(var(--layout-padding), 1fr) minmax(auto, var(--site-width)) minmax(var(--layout-padding), 1fr); */
+}
+
+
+.main-layout> :not(.full) {
+    grid-column: 2/ 3;
+}
+
+.main-layout>.full {
+    grid-column: 1 / -1;
+}
+
