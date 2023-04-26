@@ -1,20 +1,20 @@
 /* SETUP */
-@import 'setup/vars.css';
-@import 'setup/typography.css';
-@import 'setup/mq.css';
+/* @import 'setup/vars.css'; */
+/* @import 'setup/typography.css'; */
+/* @import 'setup/mq.css'; */
 
 
 /* BASICS */
 @import 'basics/base.css';
 @import 'basics/layout.css';
-@import 'basics/helpers.css';
+/* @import 'basics/helpers.css'; */
 
 /* COMPONENTS */
 /* @import 'components/header.css'; */
 /* @import 'components/logo.css'; */
 @import 'components/img-gallery.css';
-@import 'components/meme-editore.css';
-@import 'components/footer.css';
+@import 'components/meme-editor.css';
+/* @import 'components/footer.css'; */
 /* @import 'components/newsletter.css'; */
 
 /* MEDIA QUERIS */

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Meme</title>
 </head>
-<body class="main-layout">
+
+<body onload="onInit()" class="main-layout">
     <header class="main-header full main-layout">
         <section class=" flex space-between align-center">
             <div class="logo nav-content">Memegene</div>
@@ -20,16 +21,13 @@
             </nav>
         </section>
     </header>
-    <main class="main content">
+    <main class="main-content">
         <div class="img-gallery">
             <section class="favorite-search">
                 <label for="search"></label> Search:
-                <input type="text" name="" id="" placeholder="Enter search keyword">
+                <input type="text" name="keywords" id="search" placeholder="Enter search keyword">
             </section>
             <section class="img-gallery-container">
-                <img src="img (square)/1.jpg" alt="">
-                <img src="img (square)/2.jpg" alt="">
-                <img src="img (square)/3.jpg" alt="">
             </section>
             <section class="about">
                 <img src="" alt="">
@@ -39,27 +37,27 @@
         </div>
         <div class="meme-editore">
             <section class="canvas-container">
-                <canvas id="my-canvas" width="500" height="500" style="outline: 1px solid green"
-                    onclick="onDraw(event)"></canvas>
-            </section>
+                <canvas id="my-canvas" width="500" height="500" style="outline: 1px solid green" 
+                 onclick=""></canvas> 
+                 </section>
             <section class="toolbar">
                 <ul class=" clean-list">
-                    <li> <label for=""></label>
-                        <input type="text" name="" id="">
+                    <li> <label for="user-txt"></label>
+                        <input type="text" name="text" id="user-txt" placeholder="Enter text" oninput="onTextChange(this)">
                     </li>
-                    <li> <button class="btn btn-delete" >
-                        <img src="icons/trash.png" alt="">
+                    <li> <button class="btn btn-arrow">
+                            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
                         </button>
                         <button class="btn btn-add">
                             <img src="icons/add.png" alt="">
                         </button>
-                        <button class="btn btn-arrow">
-                            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
+                        <button class="btn btn-delete">
+                            <img src="icons/trash.png" alt="">
                         </button>
                     </li>
                     <li> <button class="btn btn-bigger-fontsize">
                             <img src="icons/increase font - icon.png" alt="">
-                    </button>
+                        </button>
                         <button class="btn btn-smaller-fontsize">
                             <img src="icons/decrease font - icon.png" alt="">
                         </button>
@@ -71,20 +69,21 @@
                             <img src="icons/align-to-right.png" alt="">
                         </button>
                     </li>
-                  <li>  <select name="" id="">
-                        <option value="impact">impact</option>
-                        <option value="impact">impact</option>
-                    </select>
-                    <button class="text-stroke">
-                        <img src="icons/text stroke.png" alt="">
-                    </button>
-                    <button class="color">
-                        <img src="icons/paint-board-and-brush.png" alt="">
-                    </button>
-                   <div>😀🙂😊📕❤️</div>
-                   <button class="share">Share</button>
-                   <button class="download">Download</button>
+                    <li> <select name="" id="">
+                            <option value="impact">impact</option>
+                            <option value="impact">impact</option>
+                        </select>
+                        <button class="text-stroke">
+                            <img src="icons/text stroke.png" alt="">
+                        </button>
+                        <button class="color">
+                            <img src="icons/paint-board-and-brush.png" alt="">
+                        </button>
+                        <div>😀🙂😊📕❤️</div>
+                        <button class="share">Share</button>
+                        <button class="download">Download</button>
                 </ul>
+       
             </section>
         </div>
     </main>
@@ -96,6 +95,10 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/service/meme.service.js"></script>
+    <script src="js/service/gallery.service.js"></script>
+    <script src="js/gallery.controller.js"></script>
+    <script src="js/meme.controller.js"></script>
 </body>
 
 </html>
