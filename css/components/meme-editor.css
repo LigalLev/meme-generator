@@ -1,3 +1,11 @@
-.meme-editore hide{
+/* .meme-editore hide{
     display: none;
+} */
+
+/* .meme-editore hide {
+    display: none;
+} */
+
+.canvas-contyainer{
+    width: 600px;
 }

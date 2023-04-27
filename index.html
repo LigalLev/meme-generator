@@ -15,7 +15,7 @@
             <div class="logo nav-content">Memegene</div>
             <nav class="main-nav nav-content">
                 <ul class="main-menu main-layout flex clean-list">
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#" onclick="onGalleryBtn()">Gallery</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>
@@ -23,19 +23,22 @@
     </header>
     <main class="main-content">
         <div class="img-gallery">
+            <main class ="img-gallery-layout">
             <section class="favorite-search">
                 <label for="search"></label> Search:
                 <input type="text" name="keywords" id="search" placeholder="Enter search keyword">
             </section>
             <section class="img-gallery-container">
             </section>
-            <section class="about">
+            <aside class="about">
                 <img src="" alt="">
                 <h4>About</h4>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, possimus</p>
-            </section>
+            </aside>
+        </main>
         </div>
-        <div class="meme-editore">
+        <div class="meme-editor hide">
+            <main class="meme-editor-layout">
             <section class="canvas-container">
                 <canvas id="my-canvas" width="500" height="500" style="outline: 1px solid green" 
                  onclick=""></canvas> 
@@ -45,21 +48,21 @@
                     <li> <label for="user-txt"></label>
                         <input type="text" name="text" id="user-txt" placeholder="Enter text" oninput="onTextChange(this)">
                     </li>
-                    <li> <button class="btn btn-arrow">
-                            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
+                    <li> <button class="btn btn-arrow" onclick="onSwitchLine()">
+                            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="" >
                         </button>
                         <button class="btn btn-add">
-                            <img src="icons/add.png" alt="">
+                            <img src="icons/add.png" alt="" onclick="onAddLine()">
                         </button>
-                        <button class="btn btn-delete">
+                        <button class="btn btn-delete" onclick="onDeleteLine()">
                             <img src="icons/trash.png" alt="">
                         </button>
                     </li>
-                    <li> <button class="btn btn-bigger-fontsize">
-                            <img src="icons/increase font - icon.png" alt="">
+                    <li> <button class="btn btn-bigger-fontsize" onclick="onIncreaseFont()">
+                            <img src="icons/increase font - icon.png" alt="" >
                         </button>
-                        <button class="btn btn-smaller-fontsize">
-                            <img src="icons/decrease font - icon.png" alt="">
+                        <button class="btn btn-smaller-fontsize" onclick="onDecreaseFont()">
+                            <img src="icons/decrease font - icon.png" alt="" >
                         </button>
                         <button class="btn btn-txt-left">
                             <img src="icons/align-to-left.png" alt="">
@@ -73,30 +76,30 @@
                             <option value="impact">impact</option>
                             <option value="impact">impact</option>
                         </select>
-                        <button class="text-stroke">
-                            <img src="icons/text stroke.png" alt="">
-                        </button>
-                        <button class="color">
-                            <img src="icons/paint-board-and-brush.png" alt="">
+                        <button class="stroke-color"> <input type="color"  id="color" value="#000000" oninput="onSetLineStrokeColor(this)">
+                            <img src="icons/text stroke.png" alt="" onclick="onSetFillColor(this)">
+                        <button class="color"> <input type="color"  id="strok-color" value="#000000" oninput="onSetLineColor(this)">
+                            <img src="icons/paint-board-and-brush.png" alt="" onclick="onSetFillColor(this)">
                         </button>
                         <div>😀🙂😊📕❤️</div>
                         <button class="share">Share</button>
                         <button class="download">Download</button>
                 </ul>
-       
             </section>
+        </main>
         </div>
     </main>
 
     </div>
-    <footer class="footer-container">
+    <footer class="footer-container main-layout full">
         <div class="logo logo-footer">Memegene</div>
         <small class="rights-txt">all rights reserved 2023</small>
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/service/meme.service.js"></script>
+    <script src="js/service/utill-service.js"></script>
     <script src="js/service/gallery.service.js"></script>
+    <script src="js/service/meme.service.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>
 </body>

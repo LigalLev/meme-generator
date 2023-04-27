@@ -4,12 +4,28 @@ function renderGallery() {
   let imgs = getImgs()
   let strHtmls = imgs.map(img => {
       return `
-      <a class="card-layout"  onclick=renderMeme(this${img.id})">
+      <a  onclick="onImgSelect('${img.id}')">
       <img src="${img.url}" class="meme-img"/>
           </a>`  
   })
   document.querySelector('.img-gallery-container').innerHTML = strHtmls.join('')
 }
+
+function onImgSelect(id) {
+  setImg(id)
+  clearLines()
+  const elImgGallery = document.querySelector('.img-gallery')
+  elImgGallery.classList.add('hide')
+
+  const elMemeEditor = document.querySelector('.meme-editor')
+  elMemeEditor.classList.remove('hide')
+  renderMeme()
+}
+
+// function getLines() {
+//     return gMeme.lines
+//   }
+
 
 // function renderKeywords(){
 //   let imgs = getImgs()
@@ -31,3 +47,11 @@ function renderGallery() {
 //    let gElCanvas = document.querySelector ('.canvas-container')
 //     gElCanvas.innerHTML = strHTML
 // }
+function onGalleryBtn(){
+  const elImgGallery = document.querySelector('.img-gallery')
+  elImgGallery.classList.remove('hide')
+
+  const elMemeEditor = document.querySelector('.meme-editor')
+  elMemeEditor.classList.add('hide')
+  renderGallery()
+}

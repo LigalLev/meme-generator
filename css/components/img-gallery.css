@@ -1,3 +1,10 @@
-.img-gallery hide{
-display: none;
+/* .img-gallery {
+    display: flex;
+   
+} */
+
+.img-gallery-container {
+    display: block;
+    margin-block-start: 80px;
+    margin-block-end: 80px;
 }
