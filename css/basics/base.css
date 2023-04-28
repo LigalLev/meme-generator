@@ -1,14 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: montserrat;
+}
+
 body{
     margin:0;
     background-color: var(--clr0);
+
 }
 
-img {
-    height: 200px;
+.img-gallery-container img {
+    height: 12.5em;
 }
 
-li img {
-    height: 20px;
+.btn img {
+    height: 2.5em;
+    /* padding: 0; */
+    /* margin: 0; */
 }
 
 .hide {

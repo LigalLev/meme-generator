@@ -12,87 +12,97 @@
 <body onload="onInit()" class="main-layout">
     <header class="main-header full main-layout">
         <section class=" flex space-between align-center">
-            <div class="logo nav-content">Memegene</div>
+            <div class="logo nav-content">memegen</div>
             <nav class="main-nav nav-content">
                 <ul class="main-menu main-layout flex clean-list">
                     <li><a href="#" onclick="onGalleryBtn()">Gallery</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#">| About</a></li>
                 </ul>
             </nav>
         </section>
     </header>
     <main class="main-content">
         <div class="img-gallery">
-            <main class ="img-gallery-layout">
-            <section class="favorite-search">
-                <label for="search"></label> Search:
-                <input type="text" name="keywords" id="search" placeholder="Enter search keyword">
-            </section>
-            <section class="img-gallery-container">
-            </section>
-            <aside class="about">
-                <img src="" alt="">
-                <h4>About</h4>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, possimus</p>
-            </aside>
-        </main>
+            <main class="img-gallery-layout">
+                <section class="favorite-search">
+                    <label for="search"></label> Search:
+                    <input type="text" name="keywords" id="search" placeholder="Enter search keyword">
+                </section>
+                <section class="img-gallery-container">
+                </section>
+                <aside class="about">
+                    <img src="" alt="">
+                    <h4>About</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, possimus</p>
+                </aside>
+            </main>
         </div>
         <div class="meme-editor hide">
             <main class="meme-editor-layout">
-            <section class="canvas-container">
-                <canvas id="my-canvas" width="500" height="500" style="outline: 1px solid green" 
-                 onclick=""></canvas> 
-                 </section>
-            <section class="toolbar">
-                <ul class=" clean-list">
-                    <li> <label for="user-txt"></label>
-                        <input type="text" name="text" id="user-txt" placeholder="Enter text" oninput="onTextChange(this)">
-                    </li>
-                    <li> <button class="btn btn-arrow" onclick="onSwitchLine()">
-                            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="" >
-                        </button>
-                        <button class="btn btn-add">
-                            <img src="icons/add.png" alt="" onclick="onAddLine()">
-                        </button>
-                        <button class="btn btn-delete" onclick="onDeleteLine()">
-                            <img src="icons/trash.png" alt="">
-                        </button>
-                    </li>
-                    <li> <button class="btn btn-bigger-fontsize" onclick="onIncreaseFont()">
-                            <img src="icons/increase font - icon.png" alt="" >
-                        </button>
-                        <button class="btn btn-smaller-fontsize" onclick="onDecreaseFont()">
-                            <img src="icons/decrease font - icon.png" alt="" >
-                        </button>
-                        <button class="btn btn-txt-left">
-                            <img src="icons/align-to-left.png" alt="">
-                        </button>
-                        <button class="btn btn-txt-mid"><img src="icons/center-text-alignment.png" alt=""></button>
-                        <button class="btn btn-txt-right">
-                            <img src="icons/align-to-right.png" alt="">
-                        </button>
-                    </li>
-                    <li> <select name="" id="">
-                            <option value="impact">impact</option>
-                            <option value="impact">impact</option>
-                        </select>
-                        <button class="stroke-color"> <input type="color"  id="color" value="#000000" oninput="onSetLineStrokeColor(this)">
-                            <img src="icons/text stroke.png" alt="" onclick="onSetFillColor(this)">
-                        <button class="color"> <input type="color"  id="strok-color" value="#000000" oninput="onSetLineColor(this)">
-                            <img src="icons/paint-board-and-brush.png" alt="" onclick="onSetFillColor(this)">
-                        </button>
-                        <div>😀🙂😊📕❤️</div>
-                        <button class="share">Share</button>
-                        <button class="download">Download</button>
-                </ul>
-            </section>
-        </main>
+                <section class="canvas-container">
+                    <canvas id="my-canvas" width="500" height="500" style="outline: 1px solid green"
+                        onclick=""></canvas>
+                </section>
+                <section class="toolbar">
+                    <section class=" clean-list">
+                        <div class="input-txt"> <label for="user-txt"></label>
+                            <input type="text" name="text" id="user-txt" placeholder="Enter text"
+                                oninput="onTextChange(this)">
+                        </div>
+                        <div class="btns-line-control flex"> <button class="btn btn-arrow" onclick="onSwitchLine()">
+                                <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
+                            </button>
+                            <button class="btn btn-add">
+                                <img src="icons/add.png" alt="" onclick="onAddLine()">
+                            </button>
+                            <button class="btn btn-delete" onclick="onDeleteLine()">
+                                <img src="icons/trash.png" alt="">
+                            </button>
+                        </div>
+                        <div class="btns-fontsize-align flex"> <button class="btn btn-bigger-fontsize"
+                                onclick="onIncreaseFont()">
+                                <img src="icons/increase font - icon.png" alt="">
+                            </button>
+                            <button class="btn btn-smaller-fontsize" onclick="onDecreaseFont()">
+                                <img src="icons/decrease font - icon.png" alt="">
+                            </button>
+                            <button class="btn btn-txt-left">
+                                <img src="icons/align-to-left.png" alt="" onclick="onSetAlign('left')">
+                            </button>
+                            <button class="btn btn-txt-mid"><img src="icons/center-text-alignment.png" alt=""
+                                    onclick="onSetAlign('center')"></button>
+                            <button class="btn btn-txt-right" onclick="onSetAlign('right')">
+                                <img src="icons/align-to-right.png" alt="">
+                            </button>
+                        </div>
+                        <div class="btns-fontfamily-color flex"> <select name="font" id="font" onchange="onFontChange(this)">
+                                <option value="impact">impact</option>
+                                <option value="Arial">Arial</option>
+                            </select>
+                            <button class="stroke-color btn"> <input type="color" id="color" value="#000000"
+                                    oninput="onSetLineStrokeColor(this)">
+                                <img src="icons/text stroke.png" alt="">
+                                <button class="color btn"> <input type="color" id="strok-color" value="#000000"
+                                        oninput="onSetLineColor(this)">
+                                    <img src="icons/paint-board-and-brush.png" alt="">
+                                </button>
+                        </div>
+                        <div class="emoji">😀🙂😊📕❤️</div>
+                        <div>
+                            <button class="btn-share">Share</button>
+                            <a onclick="downloadImg(this)" download="img.jpg">
+                                <button class="btn-download">Download</button>
+                            </a>
+                        </div>
+                    </section>
+                </section>
+            </main>
         </div>
     </main>
 
     </div>
     <footer class="footer-container main-layout full">
-        <div class="logo logo-footer">Memegene</div>
+        <div class="logo logo-footer">memegen</div>
         <small class="rights-txt">all rights reserved 2023</small>
     </footer>
 

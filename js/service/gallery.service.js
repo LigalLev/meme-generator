@@ -1,3 +1,4 @@
+'use strict'
 let gImgs
 let gId
 _createImgs ()

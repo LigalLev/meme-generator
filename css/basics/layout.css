@@ -7,9 +7,7 @@
 
     grid-template-columns:
         minmax(var(--layout-padding), 1fr) minmax(auto, var(--site-width)) minmax(var(--layout-padding), 1fr)
-      
 }
-
 
 .main-layout> :not(.full) {
     grid-column: 2/ 3;
@@ -23,12 +21,7 @@
     align-items: center;
 } */
 
-.meme-editor-layout {
-    display: grid;
-    grid-template-columns: var(--meme-layout);
-    /* margin-block-end: 81px; */
-    gap: 43px;
-}
+
 
 /*GALLERY IMG LAYOUT*/
 
@@ -41,6 +34,23 @@
 }
 
 /*EDITOR CONTAINER LAYOUT*/
+
+.meme-editor-layout {
+    display: grid;
+    grid-template-columns: var(--meme-layout);
+    /* margin-block-end: 81px; */
+    gap: 43px;
+    margin: 20px;
+}
+
+.toolbar {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+
 
 /* .meme-editor {
 display: grid;

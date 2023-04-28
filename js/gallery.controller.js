@@ -1,4 +1,4 @@
-
+'use strict'
 
 function renderGallery() {
   let imgs = getImgs()

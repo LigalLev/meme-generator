@@ -1,10 +1,5 @@
-/* .img-gallery {
-    display: flex;
-   
-} */
-
-.img-gallery-container {
-    display: block;
-    margin-block-start: 80px;
-    margin-block-end: 80px;
+.img-gallery img:hover{
+    cursor: pointer;
+    box-shadow: 0 0 10px 3px var(--clr3);
+    /* transition: transform .3s, box-shadow .3s; */ 
 }

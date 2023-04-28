@@ -1,3 +1,4 @@
+'use strict'
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 let gMeme
@@ -6,34 +7,69 @@ _createMeme()
 function getMeme() {
     return gMeme
 }
+function setAlign(align) {
+    const currLineIdx = getSelectedLineIdx()
+    gMeme.lines[currLineIdx].align = align
+}
+
 
 function addLine() {
-    gMeme.lines.push(_createEmptyLine('', 40, 'left', 'balck', 'Arial', 0, 220))
+    if (gMeme.lines.length > 2) return 
+    const yPos = findAviableYPos()
+    gMeme.lines.push(_createEmptyLine('Enter Text', 40, 'left', 'balck', 'impact', 0, yPos))
     const linesLength = gMeme.lines.length
     console.log(linesLength)
     setSelectedLineIdx(linesLength - 1)
     console.log('lines:', gMeme)
 }
 
-function switchLine (){
+function findAviableYPos() {
+    let isLineFound = true
+    isLineFound = gMeme.lines.find((line) => {
+        return line.pos.y === 20
+    }) 
+    if (!isLineFound){
+        return 20
+    }
+    
+    isLineFound = gMeme.lines.find((line) => {
+        return line.pos.y === 440
+    })
+    if (!isLineFound){
+        return 440
+    }
+    
+    isLineFound = gMeme.lines.find((line) => {
+        return line.pos.y === 220
+    })
+    if (!isLineFound){
+        return 220
+    }
+}
+
+function switchLine() {
     const linesLength = gMeme.lines.length
     const currLineIdx = getSelectedLineIdx()
-    let nextLineIdx = currLineIdx+1
+    let nextLineIdx = currLineIdx + 1
     if (linesLength === nextLineIdx) {
         nextLineIdx = 0
     }
-    setSelectedLineIdx(nextLineIdx) 
+    setSelectedLineIdx(nextLineIdx)
 }
 
 function setLineTxt(text) {
     gMeme.lines[getSelectedLineIdx()].txt = text
 }
 
-function deleteLine(){
+function deleteLine() {
     const currLineIdx = getSelectedLineIdx()
     gMeme.lines.splice(currLineIdx, 1)
+    let nextLineIdx = currLineIdx + 1
+    if (nextLineIdx >= gMeme.lines.length) {
+        nextLineIdx = 0
+    }
+    setSelectedLineIdx(nextLineIdx)
 }
-
 function setImg(id) {
     gMeme.selectedImgId = id
 }
@@ -62,13 +98,13 @@ function setSelectedLineIdx(idx) {
 
 function clearLines() {
     gMeme.lines = [
-        _createEmptyLine('', 40, 'left', 'balck', 'Arial', 0, 20),// TODO- refactor code duplication
-        _createEmptyLine('', 40, 'left', 'balck', 'Arial', 0, 440),
+        _createEmptyLine('Enter text here', 40, 'left', 'balck', 'impact', 0, 20),// TODO- refactor code duplication
+        _createEmptyLine('Enter more text here', 40, 'left', 'balck', 'impact', 0, 440),
         // _createEmptyLine()
     ]
 }
 
-function _createEmptyLine(txt = '', size = 40, align = 'left', color = 'balck', font = 'Arial', x = 0, y = 20) {
+function _createEmptyLine(txt = 'Enter Text here', size = 40, align = 'left', color = 'balck', font = 'impact', x = 0, y = 20) {
     return {
         txt,
         size,
@@ -89,11 +125,10 @@ function _createMeme(selectedImgId = 4, selectedLineIdx = 0) {
         selectedImgId,
         selectedLineIdx,
         lines: [
-            _createEmptyLine('', 40, 'left', 'balck', 'Arial', 0, 20),
-            _createEmptyLine('', 40, 'left', 'balck', 'Arial', 0, 440),
+            _createEmptyLine('Enter Text here', 40, 'left', 'balck', 'impact', 0, 20),
+            _createEmptyLine('Enter more text here', 40, 'left', 'balck', 'impact', 0, 440),
             // _createEmptyLine()
         ]
     }
-    console.log('lines:', gMeme.lines[0].txt)
 }
 
