@@ -21,7 +21,7 @@ function memeInit() {
   // click on canvas
 }
 
-function renderMeme() {
+function renderMeme(elLink) {
   let currImg = getImgById(gMeme.selectedImgId)
   const img = new Image()
   img.src = currImg.url
@@ -31,10 +31,13 @@ function renderMeme() {
     drawText(gMeme)
     const currLine = getSelectedLine()
     // (currLine.txt) 
+    if (elLink) {
+      downloadImg(elLink)
+    } 
     const y = currLine.pos.y
     const fontSize = currLine.size
     drawRect(50, y, 400, fontSize + 10)
-    
+
     // drawRect(50 ,440, 400 ,40)
     // drawRect(50 ,220, 400 ,40)
   }
@@ -98,9 +101,13 @@ function downloadImg(elLink) {
   console.log('elLink:', elLink)
   const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
   elLink.href = imgContent
+  
+
 }
 
-
+function onDownloadImg(elLink){
+  renderMeme(elLink)
+}
 // function resizeCanvas() {
 //   const elContainer = document.querySelector('.canvas-container')
 //   gElCanvas.width = elContainer.offsetWidth
@@ -177,16 +184,21 @@ function onDecreaseFont() {
 
 function onAddLine() {
   addLine()
+  clearTxtInput()
   renderMeme()
 }
 
 function onSwitchLine() {
   switchLine()
+  const text = getLineTxt()
+  setTxtInput(text)
+
   renderMeme()
 }
 
 function onDeleteLine() {
   deleteLine()
+  clearTxtInput()
   renderMeme()
 }
 
@@ -199,6 +211,15 @@ function onFontChange(elFont) {
   console.log('elfont:', elFont.value)
   gMeme.lines[getSelectedLineIdx()].font = elFont.value
   renderMeme()
+}
+
+function clearTxtInput() {
+  setTxtInput("")
+}
+
+function setTxtInput(text){
+  const elText = document.querySelector ('[name="text"]')
+  elText.value = text
 }
 
 // UPLOAD IMG-------

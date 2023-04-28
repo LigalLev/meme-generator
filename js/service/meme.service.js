@@ -61,6 +61,10 @@ function setLineTxt(text) {
     gMeme.lines[getSelectedLineIdx()].txt = text
 }
 
+function getLineTxt(){
+return getSelectedLine().txt
+}
+
 function deleteLine() {
     const currLineIdx = getSelectedLineIdx()
     gMeme.lines.splice(currLineIdx, 1)
