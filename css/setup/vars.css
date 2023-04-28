@@ -1,0 +1,32 @@
+:root {
+    /* --grid-size: max-content;
+	--card-image-size: 370px;
+	--header-height: 100px;
+
+	--l: 980px;
+	--m: 820px;
+	--s: 600px; */
+
+/* Layout */
+--layout-padding: 47px;
+--site-width: 1106px;
+--l: 1106px;
+--m: 860px;
+--s: 600px;
+
+/* meme editore Layout */
+
+--meme-layout: 1fr 1fr;
+--card-in-l: 1fr 1fr;
+--card-in-m: 1fr 1fr;
+--card-in-s: 1fr;
+--card-in-mobile: 1fr;
+
+
+    /* palette */
+    --clr3: #2F0F5D;
+    --clr2: #0EA293;
+    --clr1: #27E1C1;
+    --clr0: #F5F3C1;
+    --clr-1: #f0f0f0;
+} 

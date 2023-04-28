@@ -1,0 +1,17 @@
+.logo{
+    font-family: euro;
+    font-family: euro;
+    font-weight: bold;
+    color: var(--clr0);
+    letter-spacing: 0.05em;
+    font-size: 2em;
+  
+}
+
+ .logo img {
+    height: 22px;
+    width: 133px;
+    /* background-color: var(--clr0); */
+    
+ }
+

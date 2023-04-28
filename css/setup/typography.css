@@ -1,0 +1,25 @@
+/* impact */
+
+@font-face {
+    font-family: 'impact';
+    /* src: url(/fonts/impact.ttf); */
+    src: url(../../fonts/impact/impact.ttf);
+}
+
+/* motserrat-thin */
+ @font-face {
+    font-family: montserrat-thin;
+    src: url(../../fonts/montserrat/Montserrat-Thin.ttf);
+} 
+
+/* motserrat  */
+ @font-face {
+    font-family: montserrat;
+    src: url(../../fonts/montserrat/Montserrat-Regular.ttf);
+}
+
+ @font-face {
+    font-family: euro;
+    src: url(../../fonts/eurof/eurof55.ttf);
+} 
+
