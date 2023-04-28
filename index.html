@@ -9,18 +9,20 @@
     <title>Meme</title>
 </head>
 
-<body onload="onInit()" class="main-layout">
-    <header class="main-header full main-layout">
-        <section class=" flex space-between align-center">
-            <div class="logo nav-content">memegen</div>
-            <nav class="main-nav nav-content">
-                <ul class="main-menu main-layout flex clean-list">
-                    <li><a href="#" onclick="onGalleryBtn()">Gallery</a></li>
-                    <li><a href="#" onclick="onAboutBtn()">| About</a></li>
-                </ul>
-            </nav>
-        </section>
-    </header>
+<body onload="onInit()">
+    <div class="main-layout">
+        <header class="main-header full main-layout">
+            <section class=" flex space-between align-center">
+                <div class="logo nav-content">memegen</div>
+                <nav class="main-nav nav-content">
+                    <ul class="main-menu main-layout flex clean-list">
+                        <li><a href="#" onclick="onGalleryBtn()">Gallery</a></li>
+                        <li><a href="#" onclick="onAboutBtn()">| About</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </header>
+    </div>
     <main class="main-content">
         <div class="img-gallery">
             <section class="favorite-search">
@@ -29,97 +31,109 @@
             </section>
             <main class="img-gallery-layout full main-layout">
                 <section class="img-gallery-container ">
-                </section> 
+                </section>
             </main>
-                <aside class="about secondary-layout">
-                    <img src="img (square)/about.jpg" alt="">
-                    <section><h4>Ligal Levinson</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptas non et illo ab corrupti.
+            <aside class="about">
+                <img src="img (square)/about.jpg" alt="">
+                <section>
+                    <h4>Ligal Levinson</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptas non et illo ab
+                        corrupti.
                     </p>
                 </section>
-                </aside>
-           
+            </aside>
+
         </div>
         <div class="meme-editor hide">
-            <main class="secondary-layout">
-                <section class="canvas-container">
-                    <canvas id="my-canvas" width="500" height="500" style="outline: 1px solid green"
-                        onclick=""></canvas>
-                </section>
-                <section class="toolbar">
-                    <!-- <section class=" clean-list"> -->
-                    <div class="input-txt"> <label for="user-txt"></label>
-                        <input type="text" name="text" id="user-txt" placeholder="Enter text"
-                            oninput="onTextChange(this)">
-                    </div>
-                    <div class="btns-line-control flex"> <button class="btn btn-arrow" onclick="onSwitchLine()">
-                            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
-                        </button>
-                        <button class="btn btn-add">
-                            <img src="icons/add.png" alt="" onclick="onAddLine()">
-                        </button>
-                        <button class="btn btn-delete" onclick="onDeleteLine()">
-                            <img src="icons/trash.png" alt="">
-                        </button>
-                    </div>
-                    <div class="btns-fontsize-align flex"> <button class="btn btn-bigger-fontsize"
-                            onclick="onIncreaseFont()">
-                            <img src="icons/increase font - icon.png" alt="">
-                        </button>
-                        <button class="btn btn-smaller-fontsize" onclick="onDecreaseFont()">
-                            <img src="icons/decrease font - icon.png" alt="">
-                        </button>
-                        <button class="btn btn-txt-left">
-                            <img src="icons/align-to-left.png" alt="" onclick="onSetAlign('left')">
-                        </button>
-                        <button class="btn btn-txt-mid"><img src="icons/center-text-alignment.png" alt=""
-                                onclick="onSetAlign('center')"></button>
-                        <button class="btn btn-txt-right" onclick="onSetAlign('right')">
-                            <img src="icons/align-to-right.png" alt="">
-                        </button>
-                    </div>
-                    <div class="btns-fontfamily-color flex"> <select name="font" id="font"
-                            onchange="onFontChange(this)">
-                            <option value="impact">impact</option>
-                            <option value="Arial">Arial</option>
-                        </select>
-                        <button class="stroke-color btn"> <input type="color" id="color" value="#000000"
-                                oninput="onSetLineStrokeColor(this)">
-                            <img src="icons/text stroke.png" alt="">
-                            <button class="color btn"> <input type="color" id="strok-color" value="#000000"
-                                    oninput="onSetLineColor(this)">
-                                <img src="icons/paint-board-and-brush.png" alt="">
+            <div class="main-layout">
+                <main class="secondary-layout">
+                    <section class="canvas-container">
+                        <canvas id="my-canvas" width="500" height="500" style="outline: 1px solid green"
+                            onclick=""></canvas>
+                    </section>
+                    <section class="toolbar">
+                        <!-- <section class=" clean-list"> -->
+                        <div class="input-txt"> <label for="user-txt"></label>
+                            <input type="text" name="text" id="user-txt" placeholder="Enter text"
+                                oninput="onTextChange(this)">
+                        </div>
+                        <div class="btns-line-control flex"> <button class="btn btn-arrow" onclick="onSwitchLine()">
+                                <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
                             </button>
-                    </div>
-                    <div class="emoji-container">😀🙂😊📕❤️</div>
-                    <div>
-                        <button class="btn-share">Share</button>
-                        <a onclick="onDownloadImg(this)" download="img.jpg">
-                            <button class="btn-download">Download</button>
-                        </a>
-                    </div>
-                    <!-- </section> -->
-                </section>
-            </main>
+                            <button class="btn btn-add">
+                                <img src="icons/add.png" alt="" onclick="onAddLine()">
+                            </button>
+                            <button class="btn btn-delete" onclick="onDeleteLine()">
+                                <img src="icons/trash.png" alt="">
+                            </button>
+                        </div>
+                        <div class="btns-fontsize-align flex"> <button class="btn btn-bigger-fontsize"
+                                onclick="onIncreaseFont()">
+                                <img src="icons/increase font - icon.png" alt="">
+                            </button>
+                            <button class="btn btn-smaller-fontsize" onclick="onDecreaseFont()">
+                                <img src="icons/decrease font - icon.png" alt="">
+                            </button>
+                            <button class="btn btn-txt-left">
+                                <img src="icons/align-to-left.png" alt="" onclick="onSetAlign('left')">
+                            </button>
+                            <button class="btn btn-txt-mid"><img src="icons/center-text-alignment.png" alt=""
+                                    onclick="onSetAlign('center')"></button>
+                            <button class="btn btn-txt-right" onclick="onSetAlign('right')">
+                                <img src="icons/align-to-right.png" alt="">
+                            </button>
+                        </div>
+                        <div class="btns-fontfamily-color flex"> <select name="font" id="font"
+                                onchange="onFontChange(this)">
+                                <option value="impact">impact</option>
+                                <option value="Arial">Arial</option>
+                            </select>
+                            <button class="stroke-color btn"> <input type="color" id="color" value="#000000"
+                                    oninput="onSetLineStrokeColor(this)">
+                                <img src="icons/text stroke.png" alt="">
+                                <button class="color btn"> <input type="color" id="strok-color" value="#000000"
+                                        oninput="onSetLineColor(this)">
+                                    <img src="icons/paint-board-and-brush.png" alt="">
+                                </button>
+                        </div>
+                        <div class="emoji-container">😀🙂😊📕❤️</div>
+                        <div>
+                            <button class="btn-share" onclick="onUploadImg()">Share</button>
+                            <a onclick="onDownloadImg(this)" download="img.jpg">
+                                <button class="btn-download">Download</button>
+                            </a>
+                        </div>
+                        <!-- </section> -->
+                    </section>
+                </main>
+            </div>
         </div>
-        <div>
+        <div class="main-layout">
             <main class="about-container hide">
-                <h1>About memegen</h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, voluptatem ipsum. Itaque odio
-                    totam, distinctio explicabo vel dolorum quia reprehenderit aspernatur sunt laboriosam perspiciatis
-                    maiores commodi molestias nobis porro fugit fuga voluptates corporis veritatis iusto doloremque
-                    facere quas ex! Sed aut mollitia officia minus? Adipisci odio non voluptatibus laborum tempore
-                    facilis voluptate delectus. Possimus nisi eaque voluptates voluptatum iure? Doloremque optio nihil
-                    at porro quis nobis nam suscipit quibusdam libero, necessitatibus vero cumque quae hic, nesciunt
-                    ipsa aperiam corrupti id?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut nostrum voluptatum nisi exercitationem
-                    quia necessitatibus officia eveniet voluptates! Voluptate reiciendis ut nam, quae quidem fugit eos
-                    doloremque quaerat saepe culpa sint corrupti officiis autem iure commodi, harum est fuga, ea
-                    exercitationem natus ipsum aliquam quam! Facilis commodi expedita aspernatur optio quisquam ipsa
-                    ducimus animi recusandae vel reprehenderit nisi laboriosam quo atque corrupti officia, consequuntur
-                    est dignissimos aperiam dolorum, aut cupiditate inventore eaque. Quod provident sapiente omnis
-                    repudiandae odio eum quidem, necessitatibus suscipit dolore, facere, alias amet! Illum, totam harum
-                    laudantium, impedit quas maiores assumenda, excepturi natus sunt ex unde cupiditate!</p>
+                
+                    <h1>About memegen</h1>
+                    <img src="img (square)/about.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, voluptatem ipsum. Itaque odio
+                        totam, distinctio explicabo vel dolorum quia reprehenderit aspernatur sunt laboriosam
+                        perspiciatis
+                        maiores commodi molestias nobis porro fugit fuga voluptates corporis veritatis iusto doloremque
+                        facere quas ex! Sed aut mollitia officia minus? Adipisci odio non voluptatibus laborum tempore
+                        facilis voluptate delectus. Possimus nisi eaque voluptates voluptatum iure? Doloremque optio
+                        nihil
+                        at porro quis nobis nam suscipit quibusdam libero, necessitatibus vero cumque quae hic, nesciunt
+                        ipsa aperiam corrupti id</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut nostrum voluptatum nisi
+                        exercitationem
+                        quia necessitatibus officia eveniet voluptates! Voluptate reiciendis ut nam, quae quidem fugit
+                        eos
+                        doloremque quaerat saepe culpa sint corrupti officiis autem iure commodi, harum est fuga, ea
+                        exercitationem natus ipsum aliquam quam! Facilis commodi expedita aspernatur optio quisquam ipsa
+                        ducimus animi recusandae vel reprehenderit nisi laboriosam quo atque corrupti officia,
+                        consequuntur
+                        est dignissimos aperiam dolorum, aut cupiditate inventore eaque. Quod provident sapiente omnis
+                        repudiandae odio eum quidem, necessitatibus suscipit dolore, facere, alias amet! Illum, totam
+                        harum
+                        laudantium, impedit quas maiores assumenda, excepturi natus sunt ex unde cupiditate!</p>
             </main>
         </div>
     </main>
@@ -130,12 +144,12 @@
         <small class="rights-txt">all rights reserved 2023</small>
     </footer>
 
-    <script src="js/main.js"></script>
     <script src="js/service/utill-service.js"></script>
     <script src="js/service/gallery.service.js"></script>
     <script src="js/service/meme.service.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>
+    <script src="js/sharing-on-facebook.js"></script>
 </body>
 
 </html>

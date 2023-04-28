@@ -33,27 +33,23 @@ function onImgSelect(id) {
 //  }
 
 
-function onGalleryBtn() {
-  const elImgGallery = document.querySelector('.img-gallery')
-  elImgGallery.classList.remove('hide')
-
-  const elAbout = document.querySelector('.about-container')
-  elAbout.classList.add('hide')
-
-  const elMemeEditor = document.querySelector('.meme-editor')
-  elMemeEditor.classList.add('hide')
+function onGalleryBtn(){
+  showPage('.img-gallery')
   renderGallery()
 }
 
 function onAboutBtn() {
-  const elImgGallery = document.querySelector('.img-gallery')
-  elImgGallery.classList.add('hide')
+  showPage('.about-container')
+}
 
-  const elMemeEditor = document.querySelector('.meme-editor')
-  elMemeEditor.classList.add('hide')
-
-  const elAbout = document.querySelector('.about-container')
-  elAbout.classList.remove('hide')
-
-  // renderGallery()
+function showPage(pageClassName) {
+  const pageClassNames = ['.img-gallery', '.meme-editor', '.about-container']
+  pageClassNames.forEach(name => {
+    let elPageClassName = document.querySelector(name)
+    if (pageClassName === name) {
+      elPageClassName.classList.remove('hide')
+    } else {
+      elPageClassName.classList.add('hide')
+    }
+  });
 }

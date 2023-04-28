@@ -1,17 +1,18 @@
 'use strict'
 let gElCanvas
 let gCtx
-let gCurrShape = 'text'
+const gStickers = ['😅', '😎' , '😍', '😘', '🥰', '📔', '🎩', '🎁', '🥸', ' ❤️', '😊', '😀']
+const gStickersToShow = 3
+let gStickerIdx
 
 function onInit() {
   renderGallery()
-  memeInit()
+  canvasInit()
   // resizeCanvas()
   // renderMeme()
 }
 
-
-function memeInit() {
+function canvasInit() {
   gElCanvas = document.querySelector('#my-canvas')
   gCtx = gElCanvas.getContext('2d')
   // console.log('gCtx', gCtx)
@@ -63,7 +64,7 @@ function drawText() {
     gCtx.lineWidth = 1
     gCtx.strokeStyle = line.strokeColor
     gCtx.fillStyle = line.color
-    gCtx.font = line.size + 'px ' + line.font
+    gCtx.font = `${line.size}px ${line.font}`
     // console.log('line:', line)
     const lineAlign = line.align
     gCtx.textAlign = lineAlign
@@ -71,11 +72,6 @@ function drawText() {
     gCtx.fillText(line.txt, getPosXByAlign(lineAlign), line.pos.y +30)
     gCtx.strokeText(line.txt,getPosXByAlign(lineAlign), line.pos.y +30)
   })
-
-  // gCtx.fillText(text, 250, 50)
-  // gCtx.fillText(text, 250, 50)
-  // gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
-  // gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
 }
 
 
@@ -84,7 +80,6 @@ function drawRect(x, y, width, height) {
   gCtx.strokeStyle = 'black'
   gCtx.lineWidth = 0.5
   gCtx.strokeRect(x, y, width, height)
-  // gCtx.fillStyle = 'orange'
   // gCtx.fillRect(x, y, width, height)
 }
 
@@ -96,25 +91,55 @@ function clearCanvas() {
   // gCtx.clearRect(0, 0, gElCanvas.width / 2, gElCanvas.height / 2)
 }
 
+// function renderStickers() {
+//   let strHTMLs = [`<button class="btn-sticker-prev" onclick="onScrollStickers(-1)"><</button>`];
+
+//   const stickers = getStickersForDisplay();
+
+  // gStickers.forEach((sticker)=>{
+
+  // })
+
+//   for (let i = 0; i < 4; i++) {
+//       const className = (stickers[i] === '❤') ? 'sticker heart' : 'sticker';
+//       strHTMLs.push(`<span class="${className}" onclick="onAddSticker(this.innerText)">${stickers[i]}</span>`);
+//   }
+
+//   strHTMLs.push(`<button class="btn-sticker-next" onclick="onScrollStickers(1)">></button>`);
+
+//   document.querySelector('.control-stickers').innerHTML = strHTMLs.join('');
+// }
+
+// function getStickersForDisplay() {
+//   if (gStickerIdx + 2 < gStickers.length) {
+//       return gStickers.slice(gStickerIdx, gStickerIdx + 3);
+//   } else {
+//       const gap = gStickers.length - gStickerIdx;
+//       return gStickers.slice(gStickerIdx, gStickerIdx + gap).concat(gStickers.slice(0, 3 - gap));
+//   }
+// }
+
+// function onScrollStickers(diff) {
+//   gStickerIdx += diff;
+//   if (gStickerIdx === -1) {
+//       gStickerIdx = gStickers.length - 1;
+//   }
+//   if (gStickerIdx === gStickers.length) gStickerIdx = 0;
+//   renderStickers();
+// }
+
+
+
 
 function downloadImg(elLink) {
   console.log('elLink:', elLink)
   const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
   elLink.href = imgContent
-  
-
 }
 
 function onDownloadImg(elLink){
   renderMeme(elLink)
 }
-// function resizeCanvas() {
-//   const elContainer = document.querySelector('.canvas-container')
-//   gElCanvas.width = elContainer.offsetWidth
-//   gElCanvas.height = elContainer.offsetHeight
-// }
-
-
 
 function onTextChange(elInput) {
   const text = elInput.value
@@ -160,14 +185,6 @@ function onSetLineColor(color) {
 function onSetLineStrokeColor(strokeColor) {
   setLineStrokeColor(strokeColor.value)
   renderMeme()
-}
-
-function resizeCanvas() {
-  const elContainer = document.querySelector('.canvas-container')
-  // Note: changing the canvas dimension this way clears the canvas
-  gElCanvas.width = elContainer.offsetWidth
-  // Unless needed, better keep height fixed.
-  // gElCanvas.height = elContainer.offsetHeight
 }
 
 function onIncreaseFont() {
@@ -222,44 +239,3 @@ function setTxtInput(text){
   elText.value = text
 }
 
-// UPLOAD IMG-------
-  // function onUploadImg() {
-  //   const imgDataUrl = gElCanvas.toDataURL('image/jpeg') // Gets the canvas content as an image format
-  
-  //   // A function to be called if request succeeds
-  //   function onSuccess(uploadedImgUrl) {
-  //       // Encode the instance of certain characters in the url
-  //       const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-  //       console.log(encodedUploadedImgUrl)
-  //       window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
-  //   }
-  //   // Send the image to the server
-  //   doUploadImg(imgDataUrl, onSuccess)
-  // }
-  // function doUploadImg(imgDataUrl, onSuccess) {
-  //   // Pack the image for delivery
-  //   const formData = new FormData()
-  //   formData.append('img', imgDataUrl)
-  
-  //   // Send a post req with the image to the server
-  //   const XHR = new XMLHttpRequest()
-  //   XHR.onreadystatechange = () => {
-  //       // If the request is not done, we have no business here yet, so return
-  //       if (XHR.readyState !== XMLHttpRequest.DONE) return
-  //       // if the response is not ok, show an error
-  //       if (XHR.status !== 200) return console.error('Error uploading image')
-  //       const { responseText: url } = XHR
-  //       // Same as
-  //       // const url = XHR.responseText
-  
-  //       // If the response is ok, call the onSuccess callback function, 
-  //       // that will create the link to facebook using the url we got
-  //       console.log('Got back live url:', url)
-  //       onSuccess(url)
-  //   }
-  //   XHR.onerror = (req, ev) => {
-  //       console.error('Error connecting to server with request:', req, '\nGot response data:', ev)
-  //   }
-  //   XHR.open('POST', '//ca-upload.com/here/upload.php')
-  //   XHR.send(formData)
-  // }

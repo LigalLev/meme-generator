@@ -1,0 +1,175 @@
+/* MOBILE ONLY */
+
+ @media (max-width: 640px) {
+
+    :root {
+        --site-width: var(--s); 
+        --meme-layout: var(--card-in-s); 
+        } 
+     .main-header {
+     height: 70px;
+    } 
+    /* header {
+        position: static;
+       }
+     */
+   
+    .main-menu {
+     max-height: 0;
+     position: fixed;
+     top: 70px;
+     left: 0;
+     width: 100%;
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+   
+     /* background-color: #292929; */
+   
+     transition: max-height 1s;
+    }
+   
+    .main-menu > li a {
+     width: 100%;
+    } 
+   } 
+   
+   /* SMALL */
+   
+    @media (min-width: 640px) {
+    :root {
+
+     --site-width: var(--s);
+     --meme-layout: var(--card-in-s);
+    }
+   
+    header {
+     position: static;
+    }
+   
+    header .logo {
+     margin: 0;
+    }
+   
+    header nav {
+     max-width: var(--site-width); /* grid size: 468 + 40 + 470*/
+     } 
+   
+    header ul {
+     display: flex;
+     width: auto;
+     position: static;
+     height: inherit;
+     transform: translateX(0);
+     transition: none;
+    }
+   
+    header button {
+     display: none;
+    }
+   
+   }  
+
+   .main-menu > li a {
+    width: 100%;
+   } 
+   
+   /* MEDIUM */
+    
+   @media (min-width: 860px) {
+    :root {
+     --site-width: var(--m);
+     --meme-layout: var(--card-in-m);
+    }
+   
+    html {
+     font-size: 14px;
+    } 
+   
+     .grid-container {
+     grid-template-columns: var(--card-image-size) 1fr;
+    } 
+    } 
+   
+   
+   /* LARGE */
+   
+    @media screen and (min-width: 1020px) {
+    :root {
+     --site-width: var(--l);
+     --meme-layout: var(--card-in-l); 
+     --card-image-size: 468px; 
+    }
+       
+    html {
+     font-size: 16px;
+    }
+    
+    }
+   /* @media screen and (max-width: 420px) {
+    .secondary-layout {
+        display: grid;
+        grid-template-columns: var(--card-in-s);
+    }
+    .canvas-container {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .secondary-layout {
+        display: grid;
+        grid-template-columns: var(--card-in-s);
+    }
+    .canvas-container {
+        width: 500px;
+        height: 500px;
+    }
+} */
+
+/* //// TOOLBOX */
+
+/* @media screen and (min-width: 600px) {
+    .secondary-layout {
+        display: grid;
+        grid-template-columns: var(--card-in-mobile);
+    }
+    .toolbar {
+        /* width: 570px; */
+        /* display: flex;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        justify-self: center;
+    }
+}  */
+
+/*  */
+
+/* @media only screen and (min-width: 1280px) {
+    .my-memes {
+        grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    }
+} */
+/* 
+@media screen and (max-width: 375px) {
+    .secondary-layout {
+        display: grid;
+        grid-template-columns: var(--card-in-s);
+    }
+
+}  */
+    /* .gallery-container:nth-child(even) {
+        grid-column: 1;
+    }
+
+    .gallery-container:nth-child(odd) {
+        grid-column: 2;
+    } */
+
+    /* .search-box {
+        border: none;
+    }
+} */

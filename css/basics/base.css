@@ -12,15 +12,7 @@ body{
 
 }
 
-.img-gallery-container img {
-    height: 12.5em;
-}
 
-.btn img {
-    height: 2.5em;
-    /* padding: 0; */
-    /* margin: 0; */
-}
 
 .hide {
     display: none;
