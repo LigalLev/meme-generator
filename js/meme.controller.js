@@ -49,10 +49,7 @@ function drawImgFromRemote() {
 }
 
 function downloadCanvas(elLink) {
-  // Protect the image soo attacker could not download imgs from diff domain
   const data = gElCanvas.toDataURL() // For security reason you cannot do toDataUrl on tainted canvas
-  // This protects users from having private data exposed by using images
-  // to pull information from remote web sites without permission.
   elLink.href = data
   elLink.download = 'my-img.jpg'
 }
@@ -81,8 +78,6 @@ function drawText() {
 
 
 function drawRect(x, y, width, height) {
-  // using the built in .fillRect() and .strokeRect() methods to directly
-  // paint on the canvas, without using a path
   gCtx.strokeStyle = 'black'
   gCtx.lineWidth = 0.5
   gCtx.strokeRect(x, y, width, height)

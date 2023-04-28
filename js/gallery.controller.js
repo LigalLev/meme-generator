@@ -22,12 +22,6 @@ function onImgSelect(id) {
   renderMeme()
 }
 
-
-// function getLines() {
-//     return gMeme.lines
-//   }
-
-
 // function renderKeywords(){
 //   let imgs = getImgs()
 //   let strHtmls = imgs.map(img => {
@@ -38,16 +32,6 @@ function onImgSelect(id) {
 //  }
 
 
-
-// function renderMeme(){
-//    let meme = getMeme()
-
-//    let strHTML = `<canvas id="my-canvas" width="500" height="500" style="outline: 1px solid green" 
-//    onclick="onDraw(event)"></canvas> `
-
-//    let gElCanvas = document.querySelector ('.canvas-container')
-//     gElCanvas.innerHTML = strHTML
-// }
 function onGalleryBtn(){
   const elImgGallery = document.querySelector('.img-gallery')
   elImgGallery.classList.remove('hide')

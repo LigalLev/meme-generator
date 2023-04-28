@@ -4,7 +4,7 @@
     background-color: white;
     border-radius: 12px;
     border: 2px solid var(--clr0);
-    background-position: center;
+    /* background-position: center; */
     margin-inline-end: 10px;
 }
 
@@ -16,36 +16,46 @@
     border: none;
     border-radius: 0.5em;
     height: 3.75em;
-    width: 100%;
+
+    width: 35em;
     margin-block-end: 10px;
 }
 
-.input-txt input:hover{
+.input-txt {
+    width: 100%;
+}
+
+.input-txt input:hover {
     box-shadow: 0 0 10px 3px var(--clr3);
 }
 
 .btns-line-control {
     justify-content: center;
     margin-block-end: 30px;
+
 }
 
 .btns-fontsize-align {
     margin-block-end: 10px;
+    justify-content: space-between;
 }
 
 .btns-fontfamily-color {
     margin-block-end: 30px;
+
+
 }
 
 #font {
-    flex: 3;
+    /* flex: 3; */
     border: none;
     border-radius: 0.5em;
     height: 3.75em;
     margin-inline-end: 10px;
+    width: 24.002em;
 }
 
-#font:hover{
+#font:hover {
     cursor: pointer;
     box-shadow: 0 0 10px 3px var(--clr3);
 }
@@ -95,22 +105,25 @@
 }
 
 
-.btn-download, .btn-share {
+.btn-download,
+.btn-share {
     font-family: montserrat;
-    font-size: 1.25em; /*20px*/
+    font-size: 1.25em;
+    /*20px*/
     width: 7.5em;
     height: 3.75em;
     border-radius: 12px;
     border: 1px solid var(--clr-2);
     background-color: var(--clr2);
     color: var(--clr0);
-    margin-inline-end: 10px;
-    
+    margin: 10px;
+
 }
 
-.btn-download:hover, .btn-share:hover{
+.btn-download:hover,
+.btn-share:hover {
     cursor: pointer;
-    box-shadow: 0 0 10px 3px var(--clr3);   
+    box-shadow: 0 0 10px 3px var(--clr3);
 }
 
 .btn:hover {

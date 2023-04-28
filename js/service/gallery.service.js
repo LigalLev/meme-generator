@@ -56,6 +56,4 @@ return img
   //     imgGallery.innerHTML = strHTML
   //   }
 
-// function getImgIdx(idx){
-//     return gImgs.find((img) => img[i] === meme.selectedImgId)
-// }
+

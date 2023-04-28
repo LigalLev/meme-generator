@@ -1,5 +1,19 @@
-.img-gallery img:hover{
+
+
+.img-gallery-container img:hover{
     cursor: pointer;
     box-shadow: 0 0 10px 3px var(--clr3);
     /* transition: transform .3s, box-shadow .3s; */ 
+}
+
+/* .about {
+    display: grid;
+
+} */
+
+.about img {
+display: flex;
+border-radius: 50%;
+width: 150px;
+justify-self: right;
 }
