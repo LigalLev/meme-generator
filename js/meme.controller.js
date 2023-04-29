@@ -8,7 +8,6 @@ let gStickerIdx
 function onInit() {
   renderGallery()
   canvasInit()
-  // resizeCanvas()
   // renderMeme()
 }
 
@@ -16,17 +15,26 @@ function canvasInit() {
   gElCanvas = document.querySelector('#my-canvas')
   gCtx = gElCanvas.getContext('2d')
   // console.log('gCtx', gCtx)
-
+  // drawImg()
+  // renderMeme(elLink)
   // clearCanvas()
+
+  
+      window.addEventListener('resize', resizeCanvas)
+      resizeCanvas()
 
   // click on canvas
 }
 
-function renderMeme(elLink) {
+function renderMeme(elLink = null, isInitial = false) {
   let currImg = getImgById(gMeme.selectedImgId)
   const img = new Image()
   img.src = currImg.url
   img.onload = () => {
+    resizeCanvas()
+    if (isInitial){
+      clearLines()
+    }
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xEnd,yEnd
     // drawText(onTextChange(txt))
     drawText(gMeme)
@@ -37,7 +45,7 @@ function renderMeme(elLink) {
     } 
     const y = currLine.pos.y
     const fontSize = currLine.size
-    drawRect(50, y, 400, fontSize + 10)
+    drawRect(50, y, gElCanvas.width-100, fontSize + 10)
 
     // drawRect(50 ,440, 400 ,40)
     // drawRect(50 ,220, 400 ,40)
@@ -74,7 +82,13 @@ function drawText() {
   })
 }
 
-
+function resizeCanvas() {
+  const elContainer = document.querySelector('.canvas-container')
+  // Note: changing the canvas dimension this way clears the canvas
+  gElCanvas.width = elContainer.offsetWidth
+  // Unless needed, better keep height fixed.
+  gElCanvas.height = elContainer.offsetWidth
+}
 
 function drawRect(x, y, width, height) {
   gCtx.strokeStyle = 'black'
@@ -128,7 +142,12 @@ function clearCanvas() {
 //   renderStickers();
 // }
 
-
+function drawImg() {
+  const elImg = document.querySelector('img')
+  // Naive approach:
+  // there is a risk that image is not loaded yet and nothing will be drawn on canvas
+  gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height) // Draws the specified image
+}
 
 
 function downloadImg(elLink) {

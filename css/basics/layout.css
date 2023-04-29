@@ -58,7 +58,7 @@
 .secondary-layout {
     display: grid;
     grid-template-columns: var(--meme-layout);
-    margin-block-end: 81px;
+    /* margin-block-end: 81px; */
     gap: 43px;
     margin: 20px;
 }
@@ -76,6 +76,57 @@
     justify-items: center;
     margin-bottom: 20px;
 }
+
+canvas{
+    display: block;
+    background-color: aliceblue;
+    border: solid darkgreen
+}
+
+.canvas-container {
+    width: 30vw;
+    height:30vw;
+    border:1px solid black
+  }
+
+
+@media screen and (max-width: 420px) {
+    .secondary-layout {
+        display: grid;
+        grid-template-columns: var(--card-in-mobile);
+        /* margin-block-end: 81px; */
+        gap: 43px;
+        margin: 20px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .secondary-layout {
+        display: grid;
+        grid-template-columns: var(--card-in-mobile);
+        margin-block-end: 81px;
+        gap: 43px;
+        margin: 40px;
+    }
+ 
+     /* .canvas-container {
+      width: 50%;
+      height: 50%;
+      border:1px solid black
+    }  */
+}
+
+/* img {
+}        height: 100px;  */
+/* width: 100px; */
+/* } */
+/* #canvas {
+        height: 50px;
+        /* width: 100px;  */
+/* }  */
+/* }  */
+
+
 
 
 /* .meme-editor {

@@ -4,7 +4,7 @@ let gStartPos
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function onImojiInit() {
-  resizeCanvas()
+  // resizeCanvas()
   addListeners()
 }
 
@@ -65,11 +65,11 @@ function onUp() {
   document.body.style.cursor = 'grab'
 }
 
-function resizeCanvas() {
-  const elContainer = document.querySelector('.canvas-container')
-  gElCanvas.width = elContainer.offsetWidth
-  gElCanvas.height = elContainer.offsetHeight
-}
+// function resizeCanvas() {
+  // const elContainer = document.querySelector('.canvas-container')
+  // gElCanvas.width = elContainer.offsetWidth
+  // gElCanvas.height = elContainer.offsetHeight
+// }
 
 function getEvPos(ev) {
   // Gets the offset pos , the default pos

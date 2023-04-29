@@ -12,15 +12,16 @@ function renderGallery() {
 }
 
 function onImgSelect(id) {
+// _createMeme()
+  console.log("on image select canvas height is: "  +gElCanvas.height);
   setImg(id)
-  clearLines()
   clearTxtInput()
   const elImgGallery = document.querySelector('.img-gallery')
   elImgGallery.classList.add('hide')
 
   const elMemeEditor = document.querySelector('.meme-editor')
   elMemeEditor.classList.remove('hide')
-  renderMeme()
+  renderMeme(null, true)
 }
 
 // function renderKeywords(){

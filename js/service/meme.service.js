@@ -33,17 +33,17 @@ function findAviableYPos() {
     }
     
     isLineFound = gMeme.lines.find((line) => {
-        return line.pos.y === 440
+        return line.pos.y === gElCanvas.height -60
     })
     if (!isLineFound){
-        return 440
+        return gElCanvas.height -60
     }
     
     isLineFound = gMeme.lines.find((line) => {
-        return line.pos.y === 220
+        return line.pos.y === gElCanvas.height / 2
     })
     if (!isLineFound){
-        return 220
+        return gElCanvas.height / 2
     }
 }
 
@@ -103,9 +103,11 @@ function setSelectedLineIdx(idx) {
 function clearLines() {
     gMeme.lines = [
         _createEmptyLine('Enter text here', 40, 'left', 'balck', 'impact', 0, 20),// TODO- refactor code duplication
-        _createEmptyLine('Enter more text here', 40, 'left', 'balck', 'impact', 0, 440),
+        _createEmptyLine('Enter more text here', 40, 'left', 'balck', 'impact', 0, gElCanvas.height -60),
+
         // _createEmptyLine()
     ]
+    console.log('g:', gElCanvas.height)
 }
 
 function _createEmptyLine(txt = 'Enter Text here', size = 40, align = 'left', color = 'balck', font = 'impact', x = 0, y = 20) {
@@ -128,11 +130,7 @@ function _createMeme(selectedImgId = 4, selectedLineIdx = 0) {
     gMeme = {
         selectedImgId,
         selectedLineIdx,
-        lines: [
-            _createEmptyLine('Enter Text here', 40, 'left', 'balck', 'impact', 0, 20),
-            _createEmptyLine('Enter more text here', 40, 'left', 'balck', 'impact', 0, 440),
-            // _createEmptyLine()
-        ]
+        lines: []
     }
 }
 
