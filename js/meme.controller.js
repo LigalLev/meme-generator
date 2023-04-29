@@ -1,14 +1,13 @@
 'use strict'
 let gElCanvas
 let gCtx
-const gStickers = ['😅', '😎', '😍', '😘', '🥰', '📔', '🎩', '🎁', '🥸', ' ❤️', '😊', '😀']
-const gStickersToShow = 3
-let gStickerIdx = 0
+
 
 function onInit() {
   renderGallery()
   canvasInit()
   renderStickersCarousel()
+  addListeners()
   // renderMeme()
 }
 
@@ -39,6 +38,7 @@ function renderMeme(elLink = null, isInitial = false) {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xEnd,yEnd
     // drawText(onTextChange(txt))
     drawText(gMeme)
+    drawStickers()
     const currLine = getSelectedLine()
     // (currLine.txt) 
     if (elLink) {
@@ -83,6 +83,12 @@ function drawText() {
   })
 }
 
+function drawStickers(){
+const stickers = gMeme.stickers
+stickers.forEach((sticker)=>{
+gCtx.fillText(sticker.emoji, sticker.pos.x, sticker.pos.y)
+})
+}
 function resizeCanvas() {
   const elContainer = document.querySelector('.canvas-container')
   // Note: changing the canvas dimension this way clears the canvas
@@ -108,11 +114,11 @@ function clearCanvas() {
 
 
 function renderStickersCarousel() {
-  let strHTML = ` <button class="prevSticker" onclick="onPrevSticker()"><</button>`
+  let strHTML = ` <button class="btn-prevSticker" onclick="onPrevSticker()"><</button>`
   for (let i = 0; i < gStickersToShow; i++) {
-    strHTML += ` <button class="btn-sticker" onclick="onStickerClicked(${i})">${gStickers[(gStickerIdx + i) % gStickers.length]}</button>\n `
+    strHTML += ` <button class="btn btn-sticker" onclick="onStickerClicked(${i})">${gStickers[(gStickerIdx + i) % gStickers.length]}</button>\n `
   }
-  strHTML += `<button class="nextSticker" onclick="onNextSticker()">></button>`
+  strHTML += `<button class="btn-nextSticker" onclick="onNextSticker()">></button>`
 
   const elStickerContainer = document.querySelector('.sticker-container')
   elStickerContainer.innerHTML = strHTML
@@ -124,47 +130,11 @@ function onNextSticker() {
 }
 
 function onPrevSticker() {
+  if (gStickerIdx === 0) gStickerIdx = gStickers.length - 1
   gStickerIdx--
   renderStickersCarousel()
 }
 
-
-// function renderStickers() {
-//   let strHTMLs = [`<button class="btn-sticker-prev" onclick="onScrollStickers(-1)"><</button>`];
-
-//   const stickers = getStickersForDisplay();
-
-// gStickers.forEach((sticker)=>{
-
-// })
-
-//   for (let i = 0; i < 4; i++) {
-//       const className = (stickers[i] === '❤') ? 'sticker heart' : 'sticker';
-//       strHTMLs.push(`<span class="${className}" onclick="onAddSticker(this.innerText)">${stickers[i]}</span>`);
-//   }
-
-//   strHTMLs.push(`<button class="btn-sticker-next" onclick="onScrollStickers(1)">></button>`);
-
-//   document.querySelector('.control-stickers').innerHTML = strHTMLs.join('');
-// }
-
-// function getStickersForDisplay() {
-//   if (gStickerIdx + 2 < gStickers.length) {
-//       return gStickers.slice(gStickerIdx, gStickerIdx + 3);
-//   } else {
-//       const gap = gStickers.length - gStickerIdx;
-//       return gStickers.slice(gStickerIdx, gStickerIdx + gap).concat(gStickers.slice(0, 3 - gap));
-//   }
-// }
-
-// function onScrollStickers(diff) {
-//   gStickerIdx += diff;
-//   if (gStickerIdx === -1) {
-//       gStickerIdx = gStickers.length - 1;
-//   }
-//   if (gStickerIdx === gStickers.length) gStickerIdx = 0;
-//   renderStickers();
-// }
 
 function drawImg() {
   const elImg = document.querySelector('img')
@@ -282,3 +252,7 @@ function setTxtInput(text) {
   elText.value = text
 }
 
+function onStickerClicked(gStickerIdx){
+  addSticker(gStickerIdx)
+  renderMeme()
+}

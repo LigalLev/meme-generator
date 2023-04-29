@@ -1,12 +1,12 @@
 'use strict'
 /////controller
-let gStartPos
+let gStartPos = {x:0,y:0}
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
-function onImojiInit() {
-  // resizeCanvas()
-  addListeners()
-}
+// function onDragInit() {
+//   // resizeCanvas()
+//   addListeners()
+// }
 
 // Handle the listeners
 function addListeners() {
@@ -34,17 +34,17 @@ function onDown(ev) {
   // Get the ev pos from mouse or touch
   const pos = getEvPos(ev)
   // console.log('pos:', pos)
-  if (!isCircleClicked(pos)) return
+  if (!isStickerClicked(pos)) return
 
   // console.log('Down')
-  setCircleDrag(true)
+  // setCircleDrag(true)
   //Save the pos we start from
   gStartPos = pos
   document.body.style.cursor = 'grabbing'
 }
 
 function onMove(ev) {
-  const { isDrag } = getCircle()
+  const  isDrag  = gMeme.selectedStickerIdx > -1
   if (!isDrag) return
   // console.log('Move')
 
@@ -52,16 +52,16 @@ function onMove(ev) {
   // Calc the delta , the diff we moved
   const dx = pos.x - gStartPos.x
   const dy = pos.y - gStartPos.y
-  moveCircle(dx, dy)
+  moveSticker(dx, dy)
   // Save the last pos , we remember where we`ve been and move accordingly
   gStartPos = pos
   // The canvas is render again after every move
-  renderCanvas()
+  renderMeme()
 }
 
 function onUp() {
   // console.log('Up')
-  setCircleDrag(false)
+  gMeme.selectedStickerIdx = -1
   document.body.style.cursor = 'grab'
 }
 

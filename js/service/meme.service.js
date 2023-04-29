@@ -1,8 +1,31 @@
 'use strict'
+const gStickers = ['😅', '😎', '😍', '😘', '🥰', '📔', '🎩', '🎁', '🥸', ' ❤️', '😊', '😀']
+const gStickersToShow = 3
+let gStickerIdx = 0
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 let gMeme
 _createMeme()
+
+function addSticker(stickerIdx,) {
+    const sticker = _createSticker(gStickers[stickerIdx])
+    gMeme.stickers.push(sticker)
+    // console.log(':', gMeme.stickers)
+}
+
+function _createSticker(emoji) {
+    return {
+        pos: { x: gElCanvas.width / 2, y: gElCanvas.height / 2 },
+        size: 40,
+        // isDrag: false,
+        emoji,
+    
+    }
+}
+
+function getStickers() {
+    return gStickers
+}
 
 function getMeme() {
     return gMeme
@@ -14,7 +37,7 @@ function setAlign(align) {
 
 
 function addLine() {
-    if (gMeme.lines.length > 2) return 
+    if (gMeme.lines.length > 2) return
     const yPos = findAviableYPos()
     gMeme.lines.push(_createEmptyLine('Enter Text', 40, 'left', 'balck', 'impact', 0, yPos))
     const linesLength = gMeme.lines.length
@@ -27,22 +50,22 @@ function findAviableYPos() {
     let isLineFound = true
     isLineFound = gMeme.lines.find((line) => {
         return line.pos.y === 20
-    }) 
-    if (!isLineFound){
+    })
+    if (!isLineFound) {
         return 20
     }
-    
+
     isLineFound = gMeme.lines.find((line) => {
-        return line.pos.y === gElCanvas.height -60
+        return line.pos.y === gElCanvas.height - 60
     })
-    if (!isLineFound){
-        return gElCanvas.height -60
+    if (!isLineFound) {
+        return gElCanvas.height - 60
     }
-    
+
     isLineFound = gMeme.lines.find((line) => {
         return line.pos.y === gElCanvas.height / 2
     })
-    if (!isLineFound){
+    if (!isLineFound) {
         return gElCanvas.height / 2
     }
 }
@@ -61,8 +84,8 @@ function setLineTxt(text) {
     gMeme.lines[getSelectedLineIdx()].txt = text
 }
 
-function getLineTxt(){
-return getSelectedLine().txt
+function getLineTxt() {
+    return getSelectedLine().txt
 }
 
 function deleteLine() {
@@ -102,15 +125,15 @@ function setSelectedLineIdx(idx) {
 
 function clearLines() {
     gMeme.lines = [
-        _createEmptyLine('Enter text here', 40, 'left', 'balck', 'impact', 0, 20),// TODO- refactor code duplication
-        _createEmptyLine('Enter more text here', 40, 'left', 'balck', 'impact', 0, gElCanvas.height -60),
+        _createEmptyLine('Enter text here', 30, 'left', 'balck', 'impact', 0, 20),// TODO- refactor code duplication
+        _createEmptyLine('Enter more text here', 30, 'left', 'balck', 'impact', 0, gElCanvas.height - 60),
 
         // _createEmptyLine()
     ]
     console.log('g:', gElCanvas.height)
 }
 
-function _createEmptyLine(txt = 'Enter Text here', size = 40, align = 'left', color = 'balck', font = 'impact', x = 0, y = 20) {
+function _createEmptyLine(txt = 'Enter Text here', size = 30, align = 'left', color = 'balck', font = 'impact', x = 0, y = 20) {
     return {
         txt,
         size,
@@ -126,11 +149,13 @@ function _createEmptyLine(txt = 'Enter Text here', size = 40, align = 'left', co
 //     gCircle.pos.y += dy
 // }
 
-function _createMeme(selectedImgId = 4, selectedLineIdx = 0) {
+function _createMeme(selectedImgId = 4, selectedLineIdx = 0, selectedStickerIdx = -1) {
     gMeme = {
         selectedImgId,
         selectedLineIdx,
-        lines: []
+        selectedStickerIdx,
+        lines: [],
+        stickers: []
     }
 }
 

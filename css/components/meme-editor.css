@@ -2,7 +2,7 @@
     height: 3.75em;
     width: 3.75em;
     background-color: white;
-    border-radius:0.5em;
+    border-radius: 0.5em;
     border: 2px solid var(--clr0);
     /* background-position: center; */
     margin-inline-end: 10px;
@@ -132,3 +132,21 @@
 }
 
 
+.sticker-container {
+    padding: 10px;
+    border-radius: 50px;
+    background-color: white;
+
+}
+.btn-sticker{
+    font-size: 1.3em;
+    border: none;
+}
+
+.btn-prevSticker,
+.btn-nextSticker {
+    background-color: white;
+    cursor: pointer;
+    padding: 20px;
+    border: none;
+}
