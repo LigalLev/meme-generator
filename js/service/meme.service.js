@@ -9,8 +9,8 @@ _createMeme()
 
 function addSticker(stickerIdx,) {
     const sticker = _createSticker(gStickers[stickerIdx])
-    gMeme.stickers.push(sticker)
-    // console.log(':', gMeme.stickers)
+    gMeme.lines.push(sticker)
+
 }
 
 function _createSticker(emoji) {
@@ -18,7 +18,8 @@ function _createSticker(emoji) {
         pos: { x: gElCanvas.width / 2, y: gElCanvas.height / 2 },
         size: 40,
         // isDrag: false,
-        emoji,
+        txt: emoji,
+        isSticker: true
     
     }
 }
@@ -39,7 +40,7 @@ function setAlign(align) {
 function addLine() {
     if (gMeme.lines.length > 2) return
     const yPos = findAviableYPos()
-    gMeme.lines.push(_createEmptyLine('Enter Text', 40, 'left', 'balck', 'impact', 0, yPos))
+    gMeme.lines.push(_createEmptyLine('Enter Text', 30, 'left', 'balck', 'impact', 0, yPos))
     const linesLength = gMeme.lines.length
     console.log(linesLength)
     setSelectedLineIdx(linesLength - 1)

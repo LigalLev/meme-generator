@@ -38,7 +38,7 @@ function renderMeme(elLink = null, isInitial = false) {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xEnd,yEnd
     // drawText(onTextChange(txt))
     drawText(gMeme)
-    drawStickers()
+    // drawStickers()
     const currLine = getSelectedLine()
     // (currLine.txt) 
     if (elLink) {
@@ -46,7 +46,12 @@ function renderMeme(elLink = null, isInitial = false) {
     }
     const y = currLine.pos.y
     const fontSize = currLine.size
-    drawRect(50, y, gElCanvas.width - 100, fontSize + 10)
+    if(currLine.isSticker){
+      drawRect(currLine.pos.x, y-currLine.size/2, currLine.size, currLine.size)
+    } else {
+      drawRect(50, y, gElCanvas.width - 80, fontSize + 10)
+    }
+    
 
     // drawRect(50 ,440, 400 ,40)
     // drawRect(50 ,220, 400 ,40)
@@ -69,17 +74,22 @@ function downloadCanvas(elLink) {
 
 function drawText() {
   const lines = gMeme.lines
+  console.log('on dext draw the lines are:', lines)
   lines.forEach((line) => {
-    gCtx.lineWidth = 1
-    gCtx.strokeStyle = line.strokeColor
-    gCtx.fillStyle = line.color
-    gCtx.font = `${line.size}px ${line.font}`
-    // console.log('line:', line)
-    const lineAlign = line.align
-    gCtx.textAlign = lineAlign
-    gCtx.textBaseline = 'middle'
-    gCtx.fillText(line.txt, getPosXByAlign(lineAlign), line.pos.y + 30)
-    gCtx.strokeText(line.txt, getPosXByAlign(lineAlign), line.pos.y + 30)
+    if(!line.isSticker){
+      gCtx.lineWidth = 1
+      gCtx.strokeStyle = line.strokeColor
+      gCtx.fillStyle = line.color
+      gCtx.font = `${line.size}px ${line.font}`
+      // console.log('line:', line)
+      const lineAlign = line.align
+      gCtx.textAlign = lineAlign
+      gCtx.textBaseline = 'middle'
+      gCtx.fillText(line.txt, getPosXByAlign(lineAlign), line.pos.y + 30)
+      gCtx.strokeText(line.txt, getPosXByAlign(lineAlign), line.pos.y + 30)
+    } else {
+      gCtx.fillText(line.txt, line.pos.x, line.pos.y)
+    }
   })
 }
 
@@ -115,8 +125,10 @@ function clearCanvas() {
 
 function renderStickersCarousel() {
   let strHTML = ` <button class="btn-prevSticker" onclick="onPrevSticker()"><</button>`
+  
   for (let i = 0; i < gStickersToShow; i++) {
-    strHTML += ` <button class="btn btn-sticker" onclick="onStickerClicked(${i})">${gStickers[(gStickerIdx + i) % gStickers.length]}</button>\n `
+    const stickerIndex = (gStickerIdx + i) % gStickers.length
+    strHTML += ` <button class="btn btn-sticker" onclick="onStickerClicked(${stickerIndex})">${gStickers[stickerIndex]}</button>\n `
   }
   strHTML += `<button class="btn-nextSticker" onclick="onNextSticker()">></button>`
 
@@ -254,5 +266,5 @@ function setTxtInput(text) {
 
 function onStickerClicked(gStickerIdx){
   addSticker(gStickerIdx)
-  renderMeme()
+  renderMeme() 
 }
