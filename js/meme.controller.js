@@ -1,13 +1,14 @@
 'use strict'
 let gElCanvas
 let gCtx
-const gStickers = ['😅', '😎' , '😍', '😘', '🥰', '📔', '🎩', '🎁', '🥸', ' ❤️', '😊', '😀']
+const gStickers = ['😅', '😎', '😍', '😘', '🥰', '📔', '🎩', '🎁', '🥸', ' ❤️', '😊', '😀']
 const gStickersToShow = 3
-let gStickerIdx
+let gStickerIdx = 0
 
 function onInit() {
   renderGallery()
   canvasInit()
+  renderStickersCarousel()
   // renderMeme()
 }
 
@@ -19,9 +20,9 @@ function canvasInit() {
   // renderMeme(elLink)
   // clearCanvas()
 
-  
-      window.addEventListener('resize', resizeCanvas)
-      resizeCanvas()
+
+  window.addEventListener('resize', resizeCanvas)
+  resizeCanvas()
 
   // click on canvas
 }
@@ -31,8 +32,8 @@ function renderMeme(elLink = null, isInitial = false) {
   const img = new Image()
   img.src = currImg.url
   img.onload = () => {
-    resizeCanvas()
-    if (isInitial){
+    if (isInitial) {
+      resizeCanvas()
       clearLines()
     }
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xEnd,yEnd
@@ -42,10 +43,10 @@ function renderMeme(elLink = null, isInitial = false) {
     // (currLine.txt) 
     if (elLink) {
       downloadImg(elLink)
-    } 
+    }
     const y = currLine.pos.y
     const fontSize = currLine.size
-    drawRect(50, y, gElCanvas.width-100, fontSize + 10)
+    drawRect(50, y, gElCanvas.width - 100, fontSize + 10)
 
     // drawRect(50 ,440, 400 ,40)
     // drawRect(50 ,220, 400 ,40)
@@ -77,8 +78,8 @@ function drawText() {
     const lineAlign = line.align
     gCtx.textAlign = lineAlign
     gCtx.textBaseline = 'middle'
-    gCtx.fillText(line.txt, getPosXByAlign(lineAlign), line.pos.y +30)
-    gCtx.strokeText(line.txt,getPosXByAlign(lineAlign), line.pos.y +30)
+    gCtx.fillText(line.txt, getPosXByAlign(lineAlign), line.pos.y + 30)
+    gCtx.strokeText(line.txt, getPosXByAlign(lineAlign), line.pos.y + 30)
   })
 }
 
@@ -105,14 +106,37 @@ function clearCanvas() {
   // gCtx.clearRect(0, 0, gElCanvas.width / 2, gElCanvas.height / 2)
 }
 
+
+function renderStickersCarousel() {
+  let strHTML = ` <button class="prevSticker" onclick="onPrevSticker()"><</button>`
+  for (let i = 0; i < gStickersToShow; i++) {
+    strHTML += ` <button class="btn-sticker" onclick="onStickerClicked(${i})">${gStickers[(gStickerIdx + i) % gStickers.length]}</button>\n `
+  }
+  strHTML += `<button class="nextSticker" onclick="onNextSticker()">></button>`
+
+  const elStickerContainer = document.querySelector('.sticker-container')
+  elStickerContainer.innerHTML = strHTML
+}
+
+function onNextSticker() {
+  gStickerIdx++
+  renderStickersCarousel()
+}
+
+function onPrevSticker() {
+  gStickerIdx--
+  renderStickersCarousel()
+}
+
+
 // function renderStickers() {
 //   let strHTMLs = [`<button class="btn-sticker-prev" onclick="onScrollStickers(-1)"><</button>`];
 
 //   const stickers = getStickersForDisplay();
 
-  // gStickers.forEach((sticker)=>{
+// gStickers.forEach((sticker)=>{
 
-  // })
+// })
 
 //   for (let i = 0; i < 4; i++) {
 //       const className = (stickers[i] === '❤') ? 'sticker heart' : 'sticker';
@@ -156,7 +180,7 @@ function downloadImg(elLink) {
   elLink.href = imgContent
 }
 
-function onDownloadImg(elLink){
+function onDownloadImg(elLink) {
   renderMeme(elLink)
 }
 
@@ -169,8 +193,8 @@ function onTextChange(elInput) {
 //   gCurrShape = shape
 // }
 
-function getPosXByAlign(align){
-  switch(align){
+function getPosXByAlign(align) {
+  switch (align) {
     case 'left':
       return 55
     case 'right':
@@ -253,8 +277,8 @@ function clearTxtInput() {
   setTxtInput("")
 }
 
-function setTxtInput(text){
-  const elText = document.querySelector ('[name="text"]')
+function setTxtInput(text) {
+  const elText = document.querySelector('[name="text"]')
   elText.value = text
 }
 
