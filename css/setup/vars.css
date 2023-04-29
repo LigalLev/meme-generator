@@ -9,7 +9,7 @@
 
 /* Layout */
 --layout-padding: 47px;
---site-width: 1060px;
+--site-width: 1106px;
 --l: 1106px;
 --m: 860px;
 --s: 600px;
@@ -29,4 +29,23 @@
     --clr1: #27E1C1;
     --clr0: #F5F3C1;
     --clr-1: #f0f0f0;
+
+
+
+
+     /* Layout */
+ /* --site-width: 1102px;
+ --l: 1102px;
+ --m: 551px;
+ --s: 640px; 
+ --layout-padding: 49px; */
+
+/*Card layout*/
+--editor-width: 551px;
+--editor-in-l: 551px;
+--editor-in-m: 551px;
+--editor-in-s: 1fr;
+--editor-in-mobile: 1fr; 
 } 
+
+

@@ -16,14 +16,15 @@
     border: none;
     border-radius: 0.5em;
     height: 3.75em;
-
-    width: 35em;
+    width: 25em;
+    justify-self: center;
+    
     margin-block-end: 0.625em;
 }
 
-.input-txt {
+/* .input-txt {
     width: 100%;
-}
+} */
 
 .input-txt input:hover {
     box-shadow: 0 0 10px 3px var(--clr3);
@@ -61,7 +62,7 @@
 }
 
 .stroke-color {
-    display: flex;
+    /* display: flex; */
     justify-self: center;
     /* justify-content: center; */
 }
@@ -83,7 +84,7 @@
 }
 
 .color {
-    display: flex;
+    /* display: flex; */
     justify-self: center;
     /* justify-content: center; */
 }
@@ -133,8 +134,8 @@
 
 
 .sticker-container {
-    padding: 10px;
-    border-radius: 50px;
+    /* padding: 10px; */
+    border-radius: 30px;
     background-color: white;
 
 }
@@ -147,6 +148,6 @@
 .btn-nextSticker {
     background-color: white;
     cursor: pointer;
-    padding: 20px;
+    /* padding: 20px; */
     border: none;
 }

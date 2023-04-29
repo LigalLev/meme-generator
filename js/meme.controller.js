@@ -6,8 +6,8 @@ let gCtx
 function onInit() {
   renderGallery()
   canvasInit()
-  renderStickersCarousel()
   addListeners()
+  renderStickersCarousel()
   // renderMeme()
 }
 
@@ -46,12 +46,12 @@ function renderMeme(elLink = null, isInitial = false) {
     }
     const y = currLine.pos.y
     const fontSize = currLine.size
-    if(currLine.isSticker){
-      drawRect(currLine.pos.x, y-currLine.size/2, currLine.size, currLine.size)
+    if (currLine.isSticker) {
+      drawRect(currLine.pos.x, y - currLine.size / 2, currLine.size, currLine.size)
     } else {
       drawRect(50, y, gElCanvas.width - 80, fontSize + 10)
     }
-    
+
 
     // drawRect(50 ,440, 400 ,40)
     // drawRect(50 ,220, 400 ,40)
@@ -76,7 +76,7 @@ function drawText() {
   const lines = gMeme.lines
   console.log('on dext draw the lines are:', lines)
   lines.forEach((line) => {
-    if(!line.isSticker){
+    if (!line.isSticker) {
       gCtx.lineWidth = 1
       gCtx.strokeStyle = line.strokeColor
       gCtx.fillStyle = line.color
@@ -93,11 +93,11 @@ function drawText() {
   })
 }
 
-function drawStickers(){
-const stickers = gMeme.stickers
-stickers.forEach((sticker)=>{
-gCtx.fillText(sticker.emoji, sticker.pos.x, sticker.pos.y)
-})
+function drawStickers() {
+  const stickers = gMeme.stickers
+  stickers.forEach((sticker) => {
+    gCtx.fillText(sticker.emoji, sticker.pos.x, sticker.pos.y)
+  })
 }
 function resizeCanvas() {
   const elContainer = document.querySelector('.canvas-container')
@@ -115,8 +115,6 @@ function drawRect(x, y, width, height) {
 }
 
 function clearCanvas() {
-  // Sets all pixels in the rectangle defined by starting point (x, y) and size (width, height)
-  // to transparent black, erasing any previously drawn content.
   gCtx.clearText(0, 0, gElCanvas.width, gElCanvas.height)
   // You may clear part of the canvas
   // gCtx.clearRect(0, 0, gElCanvas.width / 2, gElCanvas.height / 2)
@@ -125,7 +123,7 @@ function clearCanvas() {
 
 function renderStickersCarousel() {
   let strHTML = ` <button class="btn-prevSticker" onclick="onPrevSticker()"><</button>`
-  
+
   for (let i = 0; i < gStickersToShow; i++) {
     const stickerIndex = (gStickerIdx + i) % gStickers.length
     strHTML += ` <button class="btn btn-sticker" onclick="onStickerClicked(${stickerIndex})">${gStickers[stickerIndex]}</button>\n `
@@ -150,8 +148,6 @@ function onPrevSticker() {
 
 function drawImg() {
   const elImg = document.querySelector('img')
-  // Naive approach:
-  // there is a risk that image is not loaded yet and nothing will be drawn on canvas
   gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height) // Draws the specified image
 }
 
@@ -187,19 +183,6 @@ function getPosXByAlign(align) {
 
 }
 
-
-// function onDraw(ev) {
-//   const { offsetX, offsetY } = ev
-//   console.log(' offsetX, offsetY', offsetX, offsetY)
-//   switch (gCurrShape) {
-//     case 'text':
-//       drawText('meme', offsetX, offsetY)
-//       break
-//     case 'line':
-//       drawLine(offsetX, offsetY)
-//       break
-//   }
-// }
 
 
 
@@ -264,7 +247,7 @@ function setTxtInput(text) {
   elText.value = text
 }
 
-function onStickerClicked(gStickerIdx){
+function onStickerClicked(gStickerIdx) {
   addSticker(gStickerIdx)
-  renderMeme() 
+  renderMeme()
 }
