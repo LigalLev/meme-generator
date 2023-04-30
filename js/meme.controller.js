@@ -176,15 +176,12 @@ function getPosXByAlign(align) {
     case 'left':
       return 55
     case 'right':
-      return 445
+      return 500
     case 'center':
-      return 250
+      return 290
   }
 
 }
-
-
-
 
 function onSetLineColor(color) {
   setLineColor(color.value)

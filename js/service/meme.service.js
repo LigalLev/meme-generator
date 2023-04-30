@@ -38,7 +38,8 @@ function setAlign(align) {
 
 
 function addLine() {
-    if (gMeme.lines.length > 2) return
+    const txtLines = gMeme.lines.filter((line)=> !line.isSticker) 
+    if (txtLines.length > 2) return
     const yPos = findAviableYPos()
     gMeme.lines.push(_createEmptyLine('Enter Text', 30, 'left', 'balck', 'impact', 0, yPos))
     const linesLength = gMeme.lines.length
@@ -48,22 +49,23 @@ function addLine() {
 }
 
 function findAviableYPos() {
+    const txtLines = gMeme.lines.filter((line)=> !line.isSticker) 
     let isLineFound = true
-    isLineFound = gMeme.lines.find((line) => {
+    isLineFound = txtLines.find((line) => {
         return line.pos.y === 20
     })
     if (!isLineFound) {
         return 20
     }
 
-    isLineFound = gMeme.lines.find((line) => {
+    isLineFound = txtLines.find((line) => {
         return line.pos.y === gElCanvas.height - 60
     })
     if (!isLineFound) {
         return gElCanvas.height - 60
     }
 
-    isLineFound = gMeme.lines.find((line) => {
+    isLineFound = txtLines.find((line) => {
         return line.pos.y === gElCanvas.height / 2
     })
     if (!isLineFound) {
