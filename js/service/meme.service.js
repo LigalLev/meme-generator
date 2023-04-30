@@ -1,6 +1,6 @@
 'use strict'
 const gStickers = ['😅', '😎', '😍', '😘', '🥰', '📔', '🎩', '🎁', '🥸', ' ❤️', '😊', '😀']
-const gStickersToShow = 3
+const gStickersToShow = 4
 let gStickerIdx = 0
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
@@ -17,10 +17,8 @@ function _createSticker(emoji) {
     return {
         pos: { x: gElCanvas.width / 2, y: gElCanvas.height / 2 },
         size: 40,
-        // isDrag: false,
         txt: emoji,
         isSticker: true
-    
     }
 }
 
@@ -38,10 +36,10 @@ function setAlign(align) {
 
 
 function addLine() {
-    const txtLines = gMeme.lines.filter((line)=> !line.isSticker) 
+    const txtLines = gMeme.lines.filter((line) => !line.isSticker)
     if (txtLines.length > 2) return
     const yPos = findAviableYPos()
-    gMeme.lines.push(_createEmptyLine('Enter Text', 30, 'left', 'balck', 'impact', 0, yPos))
+    gMeme.lines.push(_createEmptyLine('Enter Text', 30, 'center', 'white', 'black', 'impact', 0, yPos))
     const linesLength = gMeme.lines.length
     console.log(linesLength)
     setSelectedLineIdx(linesLength - 1)
@@ -49,20 +47,20 @@ function addLine() {
 }
 
 function findAviableYPos() {
-    const txtLines = gMeme.lines.filter((line)=> !line.isSticker) 
+    const txtLines = gMeme.lines.filter((line) => !line.isSticker)
     let isLineFound = true
     isLineFound = txtLines.find((line) => {
-        return line.pos.y === 20
+        return line.pos.y === gElCanvas.height * 0.1
     })
     if (!isLineFound) {
-        return 20
+        return gElCanvas.height * 0.1
     }
 
     isLineFound = txtLines.find((line) => {
-        return line.pos.y === gElCanvas.height - 60
+        return line.pos.y === gElCanvas.height * (1-0.1)
     })
     if (!isLineFound) {
-        return gElCanvas.height - 60
+        return gElCanvas.height * (1-0.1)
     }
 
     isLineFound = txtLines.find((line) => {
@@ -126,22 +124,21 @@ function setSelectedLineIdx(idx) {
 }
 
 
-function clearLines() {
+function createClearLines() {
     gMeme.lines = [
-        _createEmptyLine('Enter text here', 30, 'left', 'balck', 'impact', 0, 20),// TODO- refactor code duplication
-        _createEmptyLine('Enter more text here', 30, 'left', 'balck', 'impact', 0, gElCanvas.height - 60),
-
-        // _createEmptyLine()
+        _createEmptyLine('Enter text here', 30, 'center', 'white', 'black', 'impact', 0, gElCanvas.height*0.1),// TODO- refactor code duplication
+        _createEmptyLine('Enter more text here', 30, 'center', 'white', 'black', 'impact', 0, gElCanvas.height*(1-0.1)),
     ]
     console.log('g:', gElCanvas.height)
 }
 
-function _createEmptyLine(txt = 'Enter Text here', size = 30, align = 'left', color = 'balck', font = 'impact', x = 0, y = 20) {
+function _createEmptyLine(txt = 'Enter Text here', size = 30, align = 'center', color = 'white', strokeColor = 'black', font = 'impact', x = 0, y = 20) {
     return {
         txt,
         size,
         align,
         color,
+        strokeColor,
         font,
         pos: { x, y }
     }

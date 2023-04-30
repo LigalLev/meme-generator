@@ -8,53 +8,38 @@ function onInit() {
   canvasInit()
   addListeners()
   renderStickersCarousel()
-  // renderMeme()
+  
 }
 
 function canvasInit() {
   gElCanvas = document.querySelector('#my-canvas')
   gCtx = gElCanvas.getContext('2d')
-  // console.log('gCtx', gCtx)
-  // drawImg()
-  // renderMeme(elLink)
-  // clearCanvas()
-
-
   window.addEventListener('resize', resizeCanvas)
   resizeCanvas()
-
-  // click on canvas
 }
 
 function renderMeme(elLink = null, isInitial = false) {
-  let currImg = getImgById(gMeme.selectedImgId)
+  let selectedImg = getImgById(gMeme.selectedImgId)
   const img = new Image()
-  img.src = currImg.url
+  img.src = selectedImg.url
   img.onload = () => {
     if (isInitial) {
       resizeCanvas()
-      clearLines()
+      createClearLines()
     }
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xEnd,yEnd
-    // drawText(onTextChange(txt))
     drawText(gMeme)
-    // drawStickers()
-    const currLine = getSelectedLine()
-    // (currLine.txt) 
+    const selectedLine = getSelectedLine()
     if (elLink) {
       downloadImg(elLink)
     }
-    const y = currLine.pos.y
-    const fontSize = currLine.size
-    if (currLine.isSticker) {
-      drawRect(currLine.pos.x, y - currLine.size / 2, currLine.size, currLine.size)
+    const y = selectedLine.pos.y
+    const fontSize = selectedLine.size
+    if (selectedLine.isSticker) {
+      drawRect(selectedLine.pos.x-selectedLine.size*0.5, y - selectedLine.size / 2, selectedLine.size, selectedLine.size)
     } else {
-      drawRect(50, y, gElCanvas.width - 80, fontSize + 10)
+      drawRect(gElCanvas.width * 0.1, y-fontSize*0.5*1.5, gElCanvas.width * 0.80, fontSize*(1.5))
     }
-
-
-    // drawRect(50 ,440, 400 ,40)
-    // drawRect(50 ,220, 400 ,40)
   }
 }
 
@@ -67,8 +52,7 @@ function drawImgFromRemote() {
 }
 
 function downloadCanvas(elLink) {
-  const data = gElCanvas.toDataURL() // For security reason you cannot do toDataUrl on tainted canvas
-  elLink.href = data
+  const data = gElCanvas.toDataURL() 
   elLink.download = 'my-img.jpg'
 }
 
@@ -81,12 +65,11 @@ function drawText() {
       gCtx.strokeStyle = line.strokeColor
       gCtx.fillStyle = line.color
       gCtx.font = `${line.size}px ${line.font}`
-      // console.log('line:', line)
       const lineAlign = line.align
       gCtx.textAlign = lineAlign
       gCtx.textBaseline = 'middle'
-      gCtx.fillText(line.txt, getPosXByAlign(lineAlign), line.pos.y + 30)
-      gCtx.strokeText(line.txt, getPosXByAlign(lineAlign), line.pos.y + 30)
+      gCtx.fillText(line.txt, getPosXByAlign(lineAlign), line.pos.y)
+      gCtx.strokeText(line.txt, getPosXByAlign(lineAlign), line.pos.y)
     } else {
       gCtx.fillText(line.txt, line.pos.x, line.pos.y)
     }
@@ -101,9 +84,7 @@ function drawStickers() {
 }
 function resizeCanvas() {
   const elContainer = document.querySelector('.canvas-container')
-  // Note: changing the canvas dimension this way clears the canvas
   gElCanvas.width = elContainer.offsetWidth
-  // Unless needed, better keep height fixed.
   gElCanvas.height = elContainer.offsetWidth
 }
 
@@ -116,8 +97,6 @@ function drawRect(x, y, width, height) {
 
 function clearCanvas() {
   gCtx.clearText(0, 0, gElCanvas.width, gElCanvas.height)
-  // You may clear part of the canvas
-  // gCtx.clearRect(0, 0, gElCanvas.width / 2, gElCanvas.height / 2)
 }
 
 
@@ -126,7 +105,7 @@ function renderStickersCarousel() {
 
   for (let i = 0; i < gStickersToShow; i++) {
     const stickerIndex = (gStickerIdx + i) % gStickers.length
-    strHTML += ` <button class="btn btn-sticker" onclick="onStickerClicked(${stickerIndex})">${gStickers[stickerIndex]}</button>\n `
+    strHTML += ` <a class="btn btn-sticker" onclick="onStickerClicked(${stickerIndex})">${gStickers[stickerIndex]}</a>\n `
   }
   strHTML += `<button class="btn-nextSticker" onclick="onNextSticker()">></button>`
 
@@ -174,11 +153,11 @@ function onTextChange(elInput) {
 function getPosXByAlign(align) {
   switch (align) {
     case 'left':
-      return 55
+      return gElCanvas.width * 0.12
     case 'right':
-      return 500
+      return gElCanvas.width * 0.88
     case 'center':
-      return 290
+      return gElCanvas.width/2 //290
   }
 
 }

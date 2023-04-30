@@ -1,8 +1,7 @@
 /* SETUP */
 @import 'setup/vars.css';
 @import 'setup/typography.css';
-@import 'setup/mq.css';
-
+/* @import 'setup/mq.css'; */
 
 /* BASICS */
 @import 'basics/base.css';
@@ -15,7 +14,5 @@
 @import 'components/img-gallery.css';
 @import 'components/meme-editor.css';
 @import 'components/footer.css';
-/* @import 'components/newsletter.css'; */
 
-/* MEDIA QUERIS */
 

@@ -45,15 +45,5 @@ function _createImg(url, keywords) {
 return img
 }
 
-  // function renderGallery() {
-  //   const imgGallery = document.querySelector('.img-gallery-container')
-  //   let strHTML = ""
-  //   gImgs.forEach((img) => {
-  //     strHTML += `<img onclick="renderMeme('${img.id}') src="${img.url}" alt="">`
-  // console.log('img:', img.url)
-     
-  //     })
-  //     imgGallery.innerHTML = strHTML
-  //   }
 
 

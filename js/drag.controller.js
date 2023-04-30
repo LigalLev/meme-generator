@@ -3,12 +3,7 @@
 let gStartPos = {x:0, y:0}
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
-// function onDragInit() {
-//   // resizeCanvas()
-//   addListeners()
-// }
 
-// Handle the listeners
 function addListeners() {
   addMouseListeners()
   addTouchListeners()
@@ -46,7 +41,6 @@ function onMove(ev) {
   const dx = pos.x - gStartPos.x
   const dy = pos.y - gStartPos.y
   moveSticker(dx, dy)
-  // Save the last pos , we remember where we`ve been and move accordingly
   gStartPos = pos
   renderMeme()
 }

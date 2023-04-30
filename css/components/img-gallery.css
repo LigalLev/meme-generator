@@ -1,3 +1,9 @@
+.img-gallery-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-block: 40px;
+}
 .img-gallery-container img {
     height: 12.5em;
     border-radius: 1em;
@@ -6,15 +12,11 @@
 
 .img-gallery-container img:hover{
     cursor: pointer;
-    box-shadow: 0 0 10px 3px var(--clr3);
-    opacity: 0.8;
-    /* transition: transform .3s, box-shadow .3s; */ 
+    scale: 1.03;
 }
 
 .btn img {
     height: 2.5em;
-    /* padding: 0; */
-    /* margin: 0; */
 }
 
 /* .about {
@@ -24,11 +26,13 @@
 .about{
     display: flex;
     background-color: var(--clr1);
+    border-radius: 20px;
     /* margin-block-end:0; */
     justify-content: center;
     padding: 7px;
-    margin-block-end: 0;
+    margin-block-end: 0px;
     margin-block-start: 10px;
+    margin-inline: 0px;
     color: var(--clr0)
 }
 
