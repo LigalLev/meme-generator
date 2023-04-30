@@ -19,10 +19,6 @@
     height: 2.5em;
 }
 
-/* .about {
-    display: grid;
-
-} */
 .about{
     display: flex;
     background-color: var(--clr1);

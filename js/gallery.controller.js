@@ -28,15 +28,6 @@ function onImgSelect(id) {
   renderMeme(null, true)
 }
 
-// function renderKeywords(){
-//   let imgs = getImgs()
-//   let strHtmls = imgs.map(img => {
-//       return `<span class="img-description">${img.keywords}</span>`
-
-//   })
-//    document.querySelector('[name=keywords]').innerHTML = strHtmls.join('')
-//  }
-
 function onGalleryBtn(){
   showPage('.img-gallery')
   const el = document.querySelector('.about')

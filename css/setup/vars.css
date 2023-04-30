@@ -1,12 +1,5 @@
 :root {
-    /* --grid-size: max-content;
-	--card-image-size: 370px;
-	--header-height: 100px;
-
-	--l: 980px;
-	--m: 820px;
-	--s: 600px; */
-
+ 
 /* Layout */
 --layout-padding: 47px;
 --site-width: 1106px;
@@ -30,31 +23,6 @@
     --clr1: #27E1C1;
     --clr0: #F5F3C1;
     --clr-1: #f0f0f0;
-
-
-
-
-     /* Layout */
- /* --site-width: 1102px;
- --l: 1102px;
- --m: 551px;
- --s: 640px; 
- --layout-padding: 49px; */
-
-/*Card layout*/
-/*;
---editor-in-l: 551px;
---editor-in-m: 551px;
---editor-in-s: 1fr;
---editor-in-mobile: 1fr; 
-
-	--grid-size: max-content;
-	--card-image-size: 370px;
-	--header-height: 100px;
-
-	--l: 980px;
-	--m: 820px;
-	--s: 600px; */
 
 } 
 

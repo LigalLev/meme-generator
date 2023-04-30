@@ -7,11 +7,7 @@ const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 function addListeners() {
   addMouseListeners()
   addTouchListeners()
-  // Listen for resize ev
-  // window.addEventListener('resize', () => {
-    // onInit()
   }
-// })
 
 function addMouseListeners() {
   gElCanvas.addEventListener('mousedown', onDown)
@@ -27,7 +23,6 @@ function addTouchListeners() {
 
 function onDown(ev) {
   const pos = getEvPos(ev)
-  // console.log('pos:', pos)
   if (!isStickerClicked(pos)) return
   gStartPos = pos
   document.body.style.cursor = 'grabbing'

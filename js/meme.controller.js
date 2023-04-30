@@ -92,7 +92,6 @@ function drawRect(x, y, width, height) {
   gCtx.strokeStyle = 'black'
   gCtx.lineWidth = 0.5
   gCtx.strokeRect(x, y, width, height)
-  // gCtx.fillRect(x, y, width, height)
 }
 
 function clearCanvas() {
@@ -133,7 +132,7 @@ function drawImg() {
 
 function downloadImg(elLink) {
   console.log('elLink:', elLink)
-  const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+  const imgContent = gElCanvas.toDataURL('image/jpeg') 
   elLink.href = imgContent
 }
 
@@ -146,9 +145,6 @@ function onTextChange(elInput) {
   setLineTxt(text)
   renderMeme()
 }
-// function setShape(shape) {
-//   gCurrShape = shape
-// }
 
 function getPosXByAlign(align) {
   switch (align) {
