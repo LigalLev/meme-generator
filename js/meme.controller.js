@@ -24,7 +24,7 @@ function renderMeme(elLink = null, isInitial = false) {
   img.src = selectedImg.url
   img.onload = () => {
     if (isInitial) {
-      // resizeCanvas()
+      resizeCanvas()
       createClearLines()
     }
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xEnd,yEnd

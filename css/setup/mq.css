@@ -1,200 +1,47 @@
 /* MOBILE ONLY */
- 
-@media (max-width: 640px) {
-    .main-header {
-        height: 70px;
-    }
 
-    header ul {
-        max-height: 0;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
+@media (max-width: 380px) {
+    .secondary-layout {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-
-        background-color: #292929;
-
-        transition: max-height 1s;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
-    .menu-open ul {
-        max-height: 100vh;
-    }
-
-    header ul>li {
-        border-inline-end: none;
-        border-bottom: 1px solid #585858;
-    }
-
-    header ul>li a {
-        width: 100%;
-    }
-} 
-
-@media screen and (max-width: 520px) {
-    .secondary-layout {
-        display: grid;
-        grid-template-columns: minmax(10px, 1fr);
-        /* margin-block-end: 81px; */
-        /* /* gap: 43px; */
-        margin: 5px;
+    .canvas-container {
+        width: 200px;
+        height: 200px;
+        gap: 10px;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 520px) {
+
     .secondary-layout {
-        display: grid;
-        grid-template-columns: minmax(50px, 1fr);
-        /* margin-block-end: 81px;
-        gap: 43px;
-        margin: 40px; */
-    }
-}
-
-@media screen and (max-width: 880px) {
-    .secondary-layout {
-        display: grid;
-        grid-template-columns: minmax(400px, 1fr);
-        /* margin-block-end: 81px;
-        gap: 43px;
-        margin: 40px; */
-
-    }
-    /* .canvas-container {
-      width: 50%;
-      height: 50%;
-      border:1px solid black
-    }  */
-}
-@media screen and (max-width: 1120px) {
-    .secondary-layout {
-        display: grid;
-        grid-template-columns: var(--meme-layout);
-        /* margin-block-end: 81px; */
-        gap: 43px;
-        margin: 20px;
-    }
-    /* .canvas-container {
-      width: 50%;
-      height: 50%;
-      border:1px solid black
-    }  */
-}
-
-/* SMALL */
-
- /* @media (min-width: 640px) {
-    :root { */
-
-        /* --site-width: var(--s); */
-        /* --meme-layout: var(--meme-in-s); */
-    /* } */
-
-    /* header {
-        position: static;
-    }
-} */
-
-    /* header .logo {
-        margin: 0;
-    } */
-
-    /* header nav {
-        max-width: var(--site-width); */
-        /* grid size: 468 + 40 + 470*/
-     /* }  */
-
-    /* header ul {
         display: flex;
-        width: auto;
-        position: static;
-        height: inherit;
-        transform: translateX(0);
-        transition: none;
-    } */
-
-    /* header button {
-     display: none;
-    } 
-    */
-/* } */
-/* 
-.main-menu>li a {
-    width: 100%;
-} */
-
-/* MEDIUM */
-
-/* @media (min-width: 860px) {
-    :root {
-     --site-width: var(--m);
-     --meme-layout: var(--card-in-m);
-    }
-   
-    html {
-     font-size: 14px;
-    } 
-   
-     .grid-container {
-     grid-template-columns: var(--card-image-size) 1fr;
-    } 
-    }  */
-
-
-/* LARGE */
-
-/* @media screen and (min-width: 1020px) {
-    :root {
-     --site-width: var(--l);
-     --meme-layout: var(--card-in-l); 
-     --card-image-size: 468px; 
-    }
-       
-    html {
-     font-size: 16px;
-    } */
-
-
-/*  
-@media screen and (max-width: 420px) {
-    .about {
-        display: grid;
-        grid-template-columns: var(--meme-layout);
-        margin-block-end: 81px;
-        gap: 43px;
-        margin: 20px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
-    #canvas {
+    .canvas-container {
         width: 300px;
         height: 300px;
+        margin: 10px;
     }
 }
 
-@media screen and (min-width: 600px) {
-    .about {
-        display: grid;
-        grid-template-columns: var(--meme-layout);
-        margin-block-end: 81px;
-        gap: 43px;
-        margin: 20px;
+@media (max-width: 890px) {
+    .secondary-layout {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 20px;
     }
 
-    #canvas {
-        width: 500px;
-        height: 500px;
+    .canvas-container {
+        width: 400px;
+        height: 400px;
+        margin-block-start: 20px;
     }
 }
-
-.toolbar {
-    width: 570px;
-    display: flex;
-    width: 100%;
-    margin: 0;
-    text-align: center;
-    justify-self: center;
-}  */
